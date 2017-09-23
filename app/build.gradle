@@ -25,10 +25,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile 'com.android.support:appcompat-v7:25.3.1'
-<<<<<<< HEAD
     compile 'com.android.volley:volley:1.0.0'
-=======
->>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
     compile 'com.android.support.constraint:constraint-layout:1.0.0-alpha7'
     compile 'com.github.sundeepk:compact-calendar-view:1.8.4'
     compile 'com.android.support:recyclerview-v7:25.3.1'
