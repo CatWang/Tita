@@ -15,9 +15,9 @@ import com.example.catwong.tita.fragment.UserFragment;
 
 public class MyPagerAdapter extends FragmentPagerAdapter {
 
-    private final int PAGE_COUNT = 3;
+    private final int PAGE_COUNT = 4;
 
-    private String tabTitles[] = new String[] {"Dashboard", "Home", "Notifications"};
+    private String tabTitles[] = new String[] {"Calendar", "Finding", "Goals", "User"};
 
     private CalendarFragment fragment0;
     private FindingFragment fragment1;
@@ -33,19 +33,15 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
     public Fragment getItem(int position) {
         if (position == 0) {
             if (fragment0 == null) fragment0 = new CalendarFragment();
-
             return fragment0;
         } else if (position == 1) {
             if (fragment1 == null) fragment1 = new FindingFragment();
-
             return fragment1;
         } else if (position == 2) {
             if (fragment2 == null) fragment2 = new GoalsFragment();
-
             return fragment2;
         } else if (position == 3) {
             if (fragment3 == null) fragment3 = new UserFragment();
-
             return fragment3;
         }
 

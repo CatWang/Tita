@@ -5,7 +5,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.catwong.tita.R;
+
 import com.example.catwong.tita.common.CommonKey;
+
 import com.example.catwong.tita.util.PreferencesManager;
 
 public class MainActivity extends AppCompatActivity {
@@ -35,7 +37,6 @@ public class MainActivity extends AppCompatActivity {
                     } else if (preferenceManager.getBoolean(CommonKey.LOGGEDIN, false)) {
                         startActivity(new Intent(MainActivity.this, HomeActivity.class));
                     }
-
 
                     finish();
                 }

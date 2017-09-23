@@ -13,10 +13,13 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
+//import com.example.catwong.tita.adapter.EventListAdapter;
+import com.example.catwong.tita.model.Event;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -25,7 +28,11 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     private TextView mYearTextView;
     private TextView mMonTextView;
     private RecyclerView mRecyclerView;
+    //private EventListAdapter mDairyAdapter;
     private Date mDate;
+    private ArrayList<Event> mAllEventList;
+
+    private final static int REQUEST_CODE = 1;
 
     public View onCreateView(LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -35,7 +42,7 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_calendar);
-        init();
+
     }
 
     /**
@@ -44,9 +51,7 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     @Override
     public void onStart() {
         super.onStart();
-        Calendar today = Calendar.getInstance();
-        mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
-        mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
+        init();
     }
 
     /**
@@ -58,6 +63,10 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         mYearTextView = (TextView) this.getView().findViewById(R.id.diary_main_year_textview);
         mMonTextView = (TextView) this.getView().findViewById(R.id.diary_main_month_textview);
         mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.diary_main_recyclerView);
+
+        Calendar today = Calendar.getInstance();
+        mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
+        mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
     }
 
     /**

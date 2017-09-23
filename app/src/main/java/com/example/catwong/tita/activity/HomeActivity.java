@@ -31,7 +31,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         setContentView(R.layout.activity_home);
 
-//        initTabs();
+        initTabs();
     }
 
     private void initTabs() {
@@ -48,11 +48,15 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         radio_goals.setOnClickListener(this);
         radio_user.setOnClickListener(this);
 
-        // fragment
-        FragmentPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+//        // fragment
 
-        viewPager.setAdapter(pagerAdapter);
-        viewPager.setOffscreenPageLimit(4);
+        FragmentPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        try{
+            viewPager.setAdapter(pagerAdapter);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        viewPager.setOffscreenPageLimit(3);
         viewPager.addOnPageChangeListener(this);
     }
 
@@ -61,7 +65,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         switch (v.getId()) {
             case R.id.radio_calendar:
-                viewPager.setCurrentItem(1);
+                viewPager.setCurrentItem(0);
 
                 break;
             case R.id.radio_finding:
