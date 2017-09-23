@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Tita</string>
+    <string name="diary_title">Diary</string>
+    <dimen name="subheading">16sp</dimen>
+    <string name="diary_datetime">Date</string>
+    <string name="diary_detail">Your valuable memory.</string>
 </resources>

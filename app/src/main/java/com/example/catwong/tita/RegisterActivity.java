@@ -20,7 +20,7 @@ public class RegisterActivity extends AppCompatActivity{
         setContentView(R.layout.activity_register);
 
         registerButton = (Button) findViewById(R.id.register_button);
-        Intent i = new Intent(RegisterActivity.this, CalendarActivity.class);
+        final Intent i = new Intent(RegisterActivity.this, CalendarActivity.class);
         registerButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
