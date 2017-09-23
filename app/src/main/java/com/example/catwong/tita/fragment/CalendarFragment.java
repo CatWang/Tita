@@ -35,7 +35,7 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        setContentView(R.layout.activity_calendar);
-        init();
+
     }
 
     /**
@@ -44,9 +44,7 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     @Override
     public void onStart() {
         super.onStart();
-        Calendar today = Calendar.getInstance();
-        mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
-        mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
+        init();
     }
 
     /**
@@ -58,6 +56,10 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         mYearTextView = (TextView) this.getView().findViewById(R.id.diary_main_year_textview);
         mMonTextView = (TextView) this.getView().findViewById(R.id.diary_main_month_textview);
         mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.diary_main_recyclerView);
+
+        Calendar today = Calendar.getInstance();
+        mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
+        mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
     }
 
     /**
