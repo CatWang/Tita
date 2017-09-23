@@ -9,7 +9,15 @@
         android:roundIcon="@drawable/startup"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+<<<<<<< HEAD
+
+        <uses-permission android:name="android.permission.INTERNET" />
+
         <activity android:name=".MainActivity"
+=======
+        <activity
+            android:name=".MainActivity"
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -17,10 +25,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+<<<<<<< HEAD
 
         <activity android:name=".RegisterActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
         </activity>
+=======
+        <activity
+            android:name=".RegisterActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+        <activity android:name=".CalendarActivity"></activity>
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
     </application>
 
 </manifest>
