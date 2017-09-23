@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.example.catwong.tita.MainActivity"
-    android:background="@color/colorMainBackground"
-    android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+    android:background="@color/colorMainBackground">
 
     <ImageView
         android:layout_width="220dp"

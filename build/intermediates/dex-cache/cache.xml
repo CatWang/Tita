@@ -3,12 +3,12 @@
 
     <item
         is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/4f0c440acbe481499bfbefd439b26b90d9db113e/output/jars/classes.jar"
+        jar="/Users/CatWong/Desktop/Tita/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         optimize="true"
         revision="25.0.3"
-        sha1="da27a32db6af8954ee8061537c7d476fcb1df46f">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_387212c10ed0ae346c6f4efe3c70b984bb49f857/classes.dex" />
+        sha1="0d650c82a08554cbce731fac6bc4db5ec7889aa4">
+        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03102b3a24ae8c4a345d3e5d93858793a7824146/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -18,114 +18,6 @@
         revision="25.0.3"
         sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
         <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fad6591743a497f773b3a1ecfb4742c59398f3b1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/696f21d1a098fa667668c4bbaea6910981352832/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="4a26a1154d053ab11aaf4c3967c42a4d66390991">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_0be6075fb976efb5e7346164e65e413d2784888a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/19de39f97ce7a9cedff7c58f86f58daad0cb0880/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="44ee06abb66da30f5855e6bf54574e64cdcd982a">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_518a61e14b975b3c803521ead8272e35784967f5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="b9cd8fc6bd15cb915735d34535db30ece0c44603">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/constraint-layout-solver-1.0.2_45f9233fcf397ea457f062481a84cb8ac84569d1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/90854dc5fc3f6f5badf96a4f73866607d6e33cf0/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="150252b33b00274cc868578ade018fda0d43a3eb">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_036588b9bd8ec42979351f0026a3e8fd6ca1b1ca/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/24c52dfbed1b04521791b22a6840084f31b6156d/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_caecc9143469ce89b3374211040302f6a1c28fb1/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/Desktop/Tita/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="455b3b93a8eba089adefa2e5ade6b563e380a1d7">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03102b3a24ae8c4a345d3e5d93858793a7824146/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/1f7be8302d170624b0586f5505673a7e590b2ca2/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="47635644d0d5c103c1dd8360549eb9ba3225c7d3">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_f5d78a7e8803925baec8c0457d8ef04ce68f2f3a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/62168f9cfc637bf3075988129ca25eaef9bc0703/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="6ef31f1555bb4cc513ec8d52711365a8b89f3600">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8703d757bfcd5e9e8de089d6271691ff9b024676/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/394b597a666907e88f0de998bff5a561713c526c/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="efb8cb62d47d157c29d1521daac7eefd4cb881ee">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_2e8802e90349009d9887f1e830b908c75d32fc80/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/71c91e810e621818bc3f9fd6aa11b666c12fabfa/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="45f697922e6f072daa12f8a2995dc77ab03c11da">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_286725986fa29fb3942bcb6bb4c621bcb738c945/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.1/support-annotations-25.3.1.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="bf8841d29fa39e077730e7a91222c2ce269fa7c9">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-25.3.1_db88968f602b492ea36fca8b3f04f2dab07bed1c/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/Users/CatWong/.android/build-cache/bcb2c31930567447e3d664581e906ab45175017d/output/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="25.0.3"
-        sha1="052f5f840f21174a3ecf6544130194e2652cbb73">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10/classes_8dfcd0f723e463a645732fe35836ea37b6cef4e2/classes.dex" />
     </item>
 
 </items>
