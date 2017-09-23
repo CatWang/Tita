@@ -19,4 +19,157 @@
         android:text="Carolyn"
         android:textStyle="bold"
         android:layout_marginTop="10dp"/>
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_height="0.5dp"
+        android:src="@color/colorPrimaryDark" />
+
+    <RelativeLayout
+        android:id="@+id/user_like_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/pic_mod_pwd"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_like_usr"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/pic_mod_pwd"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Likes"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/email_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/pic_mod_pwd1"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_email_usr"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/pic_mod_pwd1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Email"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/fb_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/pic_mod_pwd2"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_fb_usr_1"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/pic_mod_pwd2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Facebook"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/twitter_link"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/pic_mod_pwd3"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_tw_usr_1"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/pic_mod_pwd3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Twitter"/>
+
+    </RelativeLayout>
+
+    <ImageView
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:paddingLeft="40dp"
+        android:paddingRight="40dp"
+        android:layout_height="0.5dp"
+        android:src="@color/colorPrimaryDark" />
+
+
+    <RelativeLayout
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:orientation="horizontal"
+        android:clickable="true">
+        <ImageView
+            android:id="@+id/pic_mod_pwd4"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="50dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/ic_logout"
+            />
+        <TextView
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/pic_mod_pwd4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="22dp"
+            android:textColor="@color/colorPrimaryDark"
+            android:text="Logout"/>
+
+    </RelativeLayout>
+
 </LinearLayout>
