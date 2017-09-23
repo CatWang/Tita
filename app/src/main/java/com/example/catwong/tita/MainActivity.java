@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
                 } finally {
                     Intent i = new Intent(MainActivity.this,
-                            RegisterActivity.class);
+                            CalendarActivity.class);
                     startActivity(i);
                     finish();
                 }
