@@ -1,8 +1,12 @@
 package com.example.catwong.tita;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import com.example.catwong.tita.common.CommonKey;
+import com.example.catwong.tita.util.PreferencesManager;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -10,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        final PreferencesManager preferenceManager = PreferencesManager.getInstance(this);
 
         Thread loadingThread = new Thread() {
 
@@ -21,14 +26,24 @@ public class MainActivity extends AppCompatActivity {
                 } catch (Exception e) {
 
                 } finally {
-                    Intent i = new Intent(MainActivity.this,
-                            RegisterActivity.class);
-                    startActivity(i);
+
+                    if (preferenceManager.getBoolean(CommonKey.PREF_IS_FIRST_LAUNCH, true)) {
+                        preferenceManager.setBoolean(CommonKey.PREF_IS_FIRST_LAUNCH, false);
+                        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                    } else if (!preferenceManager.getBoolean(CommonKey.LOGGEDIN, false)) {
+                        startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                    } else if (preferenceManager.getBoolean(CommonKey.LOGGEDIN, false)) {
+                        startActivity(new Intent(MainActivity.this, CalendarActivity.class));
+                    }
+
+
                     finish();
                 }
             }
         };
 
         loadingThread.start();
+
     }
 }
+

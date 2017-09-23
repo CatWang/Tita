@@ -28,7 +28,15 @@
         </activity>
 
         <activity android:name=".CalendarActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+        </activity>
+
+        <activity android:name=".LoginActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:windowSoftInputMode="adjustPan">
+
+        </activity>
     </application>
 
 </manifest>
