@@ -16,8 +16,10 @@
             android:id="@+id/radio_calendar"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:paddingTop="3dp"
+            android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_calendar"
+            android:drawableTop="@drawable/calendar_40"
             android:checked="true"
             android:button="@null" />
 
@@ -25,8 +27,9 @@
             android:id="@+id/radio_finding"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:paddingTop="3dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_find"
+            android:drawableTop="@drawable/find_40"
             android:button="@null"
             />
 
@@ -34,8 +37,9 @@
             android:id="@+id/radio_goals"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:paddingTop="3dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_goal"
+            android:drawableTop="@drawable/goal_40"
             android:button="@null"
              />
 
@@ -43,8 +47,9 @@
             android:id="@+id/radio_user"
             android:layout_width="0dp"
             android:layout_height="50dp"
+            android:paddingTop="3dp"
             android:layout_weight="1"
-            android:drawableTop="@drawable/ic_user_center"
+            android:drawableTop="@drawable/setting_40"
             android:button="@null" />
 
     </LinearLayout>
