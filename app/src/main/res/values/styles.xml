@@ -8,5 +8,11 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+<<<<<<< HEAD
+    <style name="CustomTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:textColor">#3EB6CE</item>
+    </style>
+=======
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
 </resources>
