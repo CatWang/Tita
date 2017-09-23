@@ -17,12 +17,12 @@ public class MainActivity extends AppCompatActivity {
             public void run() {
                 try {
                     super.run();
-                    sleep(2000);
+                    sleep(1000);
                 } catch (Exception e) {
 
                 } finally {
                     Intent i = new Intent(MainActivity.this,
-                            CalendarActivity.class);
+                            RegisterActivity.class);
                     startActivity(i);
                     finish();
                 }
