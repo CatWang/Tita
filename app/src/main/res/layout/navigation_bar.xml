@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RadioGroup
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#F7F7F7"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="360dp"
+        android:layout_height="55dp"
+        android:layout_gravity="center"
+        android:padding="3dp">
+
+        <RadioButton
+            android:id="@+id/radio_calendar"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_dashboard_black_24dp"
+            android:checked="true"
+            android:button="@null"
+            android:text="calendar"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_finding"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_home_black_24dp"
+            android:button="@null"
+            android:text="finding"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_goals"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_notifications_black_24dp"
+            android:button="@null"
+            android:text="goals"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:textSize="12sp" />
+
+        <RadioButton
+            android:id="@+id/radio_user"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:drawableTop="@drawable/ic_notifications_black_24dp"
+            android:button="@null"
+            android:text="user"
+            android:gravity="center"
+            android:textColor="#555555"
+            android:textSize="12sp" />
+
+    </LinearLayout>
+
+</RadioGroup>

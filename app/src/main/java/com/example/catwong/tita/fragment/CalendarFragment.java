@@ -1,13 +1,18 @@
-package com.example.catwong.tita;
+package com.example.catwong.tita.fragment;
 
 import android.app.Activity;
+import android.support.v4.app.Fragment;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.catwong.tita.R;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
@@ -15,17 +20,21 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-public class CalendarActivity extends AppCompatActivity implements CompactCalendarView.CompactCalendarViewListener{
+public class CalendarFragment extends Fragment implements CompactCalendarView.CompactCalendarViewListener{
     private CompactCalendarView mCompactCalendarView;
     private TextView mYearTextView;
     private TextView mMonTextView;
     private RecyclerView mRecyclerView;
     private Date mDate;
+
+    public View onCreateView(LayoutInflater inflater,
+                             ViewGroup container, Bundle savedInstanceState) {
+        return inflater.inflate(R.layout.fragment_calendar, container, false);
+    }
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_calendar);
-        initSystemBar(this);
+//        setContentView(R.layout.activity_calendar);
         init();
     }
 
@@ -33,7 +42,7 @@ public class CalendarActivity extends AppCompatActivity implements CompactCalend
      * Override the onStart method and set the year and month of the calendar
      */
     @Override
-    protected void onStart() {
+    public void onStart() {
         super.onStart();
         Calendar today = Calendar.getInstance();
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
@@ -44,11 +53,11 @@ public class CalendarActivity extends AppCompatActivity implements CompactCalend
      * Initial all the widgets
      */
     private void init() {
-        mCompactCalendarView = (CompactCalendarView) findViewById(R.id.compactcalendar_view);
+        mCompactCalendarView = (CompactCalendarView) this.getView().findViewById(R.id.compactcalendar_view);
         mCompactCalendarView.setUseThreeLetterAbbreviation(true);
-        mYearTextView = (TextView) findViewById(R.id.diary_main_year_textview);
-        mMonTextView = (TextView) findViewById(R.id.diary_main_month_textview);
-        mRecyclerView = (RecyclerView) findViewById(R.id.diary_main_recyclerView);
+        mYearTextView = (TextView) this.getView().findViewById(R.id.diary_main_year_textview);
+        mMonTextView = (TextView) this.getView().findViewById(R.id.diary_main_month_textview);
+        mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.diary_main_recyclerView);
     }
 
     /**
@@ -77,14 +86,4 @@ public class CalendarActivity extends AppCompatActivity implements CompactCalend
 //        showDiaryBasedOnDate(firstDayOfNewMonth);
     }
 
-    public static void initSystemBar(Activity activity) {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-//            setTranslucentStatus(activity, true);
-//        }
-        SystemBarTintManager tintManager = new SystemBarTintManager(activity);
-        tintManager.setStatusBarTintEnabled(true);
-
-        tintManager.setStatusBarTintResource(R.color.colorPrimary);
-
-    }
 }
