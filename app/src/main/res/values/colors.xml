@@ -4,12 +4,4 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="colorMainBackground">#fff</color>
-<<<<<<< HEAD
-    <color name="colorTextButton">#2E84E8</color>
-=======
-    <color name="toolPrimary">#FFFFFF</color>
-    <color name="calendar_selected_day_background">#F44336</color>
-    <color name="calendar_current_day">#FBC02D</color>
-    <color name="colorTransparentBlack">#14000000</color>
->>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
 </resources>
