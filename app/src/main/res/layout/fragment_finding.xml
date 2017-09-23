@@ -7,4 +7,5 @@
         android:layout_height="wrap_content"
         android:text="finding"
         android:textAlignment="center"/>
+
 </LinearLayout>

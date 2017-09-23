@@ -13,7 +13,7 @@
         <uses-permission android:name="android.permission.INTERNET" />
 
 
-        <activity android:name=".MainActivity"
+        <activity android:name=".activity.MainActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".RegisterActivity"
+        <activity android:name=".activity.RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan">
         </activity>
@@ -32,11 +32,12 @@
 
         </activity>
 
-        <activity android:name=".LoginActivity"
+        <activity android:name=".activity.LoginActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan">
 
         </activity>
+
     </application>
 
 </manifest>

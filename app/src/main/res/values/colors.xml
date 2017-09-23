@@ -9,4 +9,5 @@
     <color name="calendar_selected_day_background">#F44336</color>
     <color name="calendar_current_day">#FBC02D</color>
     <color name="colorTransparentBlack">#14000000</color>
+    <color name="colorBlack">#000</color>
 </resources>

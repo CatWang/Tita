@@ -2,8 +2,8 @@
     <string name="app_name">Tita</string>
     <string name="diary_title">Diary</string>
     <dimen name="subheading">16sp</dimen>
-    <string name="diary_datetime">Date</string>
-    <string name="diary_detail">Your valuable memory.</string>
+    <string name="diary_datetime">5:00 PM</string>
+    <string name="diary_detail">DCH, Rice</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
