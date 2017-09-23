@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         <uses-permission android:name="android.permission.INTERNET" />
 
         <activity android:name=".MainActivity"
+=======
+        <activity
+            android:name=".MainActivity"
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
 =======
         <activity
             android:name=".MainActivity"
@@ -26,16 +31,22 @@
             </intent-filter>
         </activity>
 <<<<<<< HEAD
+<<<<<<< HEAD
 
         <activity android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"
             android:windowSoftInputMode="adjustPan">
         </activity>
 =======
+=======
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
         <activity
             android:name=".RegisterActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"></activity>
         <activity android:name=".CalendarActivity"></activity>
+<<<<<<< HEAD
+>>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
+=======
 >>>>>>> efc9dc89f42b40558fa8040ce5014b185345216a
     </application>
 

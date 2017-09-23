@@ -2,22 +2,58 @@
 <items version="2" >
 
     <item
-        is-multidex="true"
-        jar="/Users/CatWong/Desktop/Tita/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="D:\android\sdk\extras\m2repository\com\android\support\constraint\constraint-layout-solver\1.0.0-alpha7\constraint-layout-solver-1.0.0-alpha7.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="0d650c82a08554cbce731fac6bc4db5ec7889aa4">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run-bootstrap_03102b3a24ae8c4a345d3e5d93858793a7824146/classes.dex" />
+        sha1="439eeb5ffd54cbd18db0a6aea471e8356f19fc36">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\constraint-layout-solver-1.0.0-alpha7_92682641be0a697b3d93451605ae0f55c83fda95.jar" />
     </item>
     <item
-        is-multidex="true"
-        jar="/Users/CatWong/Desktop/Tita/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
-        jumboMode="true"
+        is-multidex="false"
+        jar="C:\Users\LENOVO\.gradle\caches\modules-2\files-2.1\com.readystatesoftware.systembartint\systembartint\1.0.3\de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287\systembartint-1.0.3.jar"
+        jumboMode="false"
         optimize="true"
         revision="25.0.3"
-        sha1="3be78ebc2706b2e1fe2f12d5726887a92d6c183b">
-        <dex dex="/Users/CatWong/Desktop/Tita/app/build/intermediates/transforms/dex/debug/folders/1000/10000/instant-run_fad6591743a497f773b3a1ecfb4742c59398f3b1/classes.dex" />
+        sha1="de4f7404e2f58d8f6e83cb1e85d0c2d6c2987287">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\systembartint-1.0.3_d6ee1b52eee5f737100ba3b218829114e4aa4550.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\LENOVO\.android\build-cache\09a6cc305ebbc7db3b127d10606c8bb02f380846\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="914f5d3e3ace66080e59613708f06d129a222e25">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\classes_e07c419d91040b34541bb3cacfcaf4d05d9e0df2.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\LENOVO\.android\build-cache\6e68401e458e55ff192e48a6d8c124099276471a\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="541a2ad68dc68aa49795821f8280b7624e6a0c9b">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\classes_e404ff356a2ab9adfda0cbc3f57e7398261560c1.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\LENOVO\.android\build-cache\3df53c00a55b0a91626b30d46f16e9db0cc28f12\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="95519720620b553f63afc789beba9ad582807f7c">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\classes_3c4c307a56b849f5a52d1a90a30ded17f8720cec.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="C:\Users\LENOVO\.android\build-cache\09f850ee751f4a157380a3759a5992252379a26c\output\jars\classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="25.0.3"
+        sha1="77c06640cfe5b8da072cdd7e3bbbd151e635ea03">
+        <dex dex="G:\Github\Tita\app\build\intermediates\pre-dexed\debug\classes_08c25727971a1baf96da6d9b6af5098370cc355b.jar" />
     </item>
 
 </items>
