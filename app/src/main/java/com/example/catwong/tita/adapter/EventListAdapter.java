@@ -66,7 +66,15 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
         holder.mLocation.setText(event.getLocation());
         holder.mDatetime.setText(Common.dateFormat.getTimeFromeDate(event.getStartTime())
             + " - " +  Common.dateFormat.getTimeFromeDate(event.getEndTime()) );
+        holder.imgTrash.setTag(position);
 
+        holder.imgTrash.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = (Integer) v.getTag();
+                mEventList.remove(position);
+            }
+        });
     }
 
     @Override
