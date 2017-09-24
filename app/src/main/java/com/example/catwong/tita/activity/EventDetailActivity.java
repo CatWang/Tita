@@ -2,6 +2,8 @@ package com.example.catwong.tita.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -12,6 +14,9 @@ import com.example.catwong.tita.R;
 import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.HttpHelper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -27,11 +32,40 @@ public class EventDetailActivity extends AppCompatActivity {
     private ImageView imgAdd, imgLike, imgShare, imgEmail, imgFb;
     private ImageView imgTw, imgTrash;
 
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                JsonObject jsonObject = (JsonObject) msg.obj;
+
+                JsonArray array = jsonObject.get("event").getAsJsonArray();
+                JsonObject event = array.get(0).getAsJsonObject();
+
+                txtTitle.setText(event.get("title").getAsString());
+                txtLocation.setText(event.get("location").getAsString());
+                txtStartTime.setText(event.get("start_time").getAsString());
+                txtEndTime.setText(event.get("end_time").getAsString());
+                txtLink.setText(event.get("homepage_link").getAsString());
+                txtDescription.setText(event.get("description").getAsString());
+
+                if (event.get("type").getAsString().equals("private")) {
+                    imgLike.setVisibility(View.INVISIBLE);
+                }
+
+                imgAdd.setVisibility(View.INVISIBLE);
+            }
+
+            return true;
+        }
+    });
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragement_event_detail);
+
+        HttpHelper.get(handler, "event/" + getIntent().getStringExtra("id"), true);
 
         txtTitle = (TextView) findViewById(R.id.detail_event_title);
         txtMore = (TextView) findViewById(R.id.detail_txt_more);
@@ -48,53 +82,5 @@ public class EventDetailActivity extends AppCompatActivity {
         imgFb = (ImageView) findViewById(R.id.detail_fb);
         imgTw = (ImageView) findViewById(R.id.detail_tw);
         imgTrash = (ImageView) findViewById(R.id.detail_trash);
-
-        Intent i = getIntent();
-        Event event = (Event) i.getSerializableExtra(CommonKey.EVENT);
-
-
-        if (event != null) {
-            System.out.print("Debug-info" + event.toString());
-            txtTitle.setText(event.getTitle());
-
-            txtMore.setText(event.getKeywordString());
-            txtStartTime.setText(Common.dateFormat.
-                    getDateTimeStringFromDate(event.getStartTime()));
-            txtEndTime.setText(Common.dateFormat.
-                    getDateTimeStringFromDate(event.getEndTime()));
-            txtLocation.setText(event.getLocation());
-
-            txtDescription.setText(event.getDescription());
-            txtLocation.setText(event.getHomepageLink());
-
-            if (event.getType() == CommonKey.TYPE_PRIVATE) {
-                imgLike.setVisibility(View.INVISIBLE);
-            }
-
-            // check if liked
-            // code here
-
-            if (event.isAdded()) {
-                imgAdd.setVisibility(View.INVISIBLE);
-            } else {
-                imgTrash.setVisibility(View.GONE);
-            }
-
-            // delete function
-            // code here
-
-            imgShare.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    // share here
-                }
-            });
-        } else {
-            System.out.println("Debug-info" + " true");
-        }
-
-
-
-
     }
 }

@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +29,10 @@ import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.model.Goal;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.HttpHelper;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -41,10 +46,42 @@ import java.util.Date;
 public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemClickListener{
     private RecyclerView mRecyclerView;
     private GoalListAdapter mGoalAdapter;
-    private ArrayList<Goal> mAllGoalList;
+    private ArrayList<Goal> mAllGoalList = new ArrayList<>();
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
     private ImageView imgAddGaol;
+
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                mAllGoalList.clear();
+
+                JsonObject jsonObject = (JsonObject) msg.obj;
+
+                JsonArray array = jsonObject.get("goals").getAsJsonArray();
+                for(int i = 0; i < array.size(); i++){
+                    JsonObject subObject = array.get(i).getAsJsonObject();
+
+                    Goal goal = new Goal();
+                    goal.setmUserID(subObject.get("id").getAsInt());
+                    goal.setTitle(subObject.get("title").getAsString());
+                    goal.setDescription(subObject.get("description").getAsString());
+                    goal.setLocation(subObject.get("location").getAsString());
+                    goal.setRepeatDay(subObject.get("repeat_day").getAsString());
+                    goal.setStartTime(HttpHelper.getTime(subObject.get("start_time").getAsString().replace('T', ' ')));
+                    goal.setEndtime(HttpHelper.getTime(subObject.get("end_time").getAsString().replace('T', ' ')));
+
+                    mAllGoalList.add(goal);
+                }
+
+                refreshAdapter();
+            }
+
+            return true;
+        }
+    });
+
 
     public GoalsFragment(){
 
@@ -76,7 +113,6 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
         super.onStart();
         init();
         setAdapter();
-        setListener();
     }
 
     /**
@@ -129,25 +165,29 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
 
     }
     private void setAdapter() {
-        mAllGoalList = new ArrayList<Goal> ();
+        Calendar c = Calendar.getInstance();
+        String today = HttpHelper.getDateString(c);
 
-        Date startTime = Common.dateFormat.getTimeFromString("16:00");
-        Date endTime = Common.dateFormat.getTimeFromString("18:00");
-        for (int i = 0; i < 10; ++i) {
-            Goal event = new Goal(i, "Read Paper", "Forden Library", "1100011", startTime, endTime);
-            mAllGoalList.add(event);
-        }
-        Collections.reverse(mAllGoalList);
+        int day = c.get(Calendar.DATE);
+        c.set(Calendar.DATE, day + 1);
+        String tomorrow = HttpHelper.getDateString(c);
+
+        HttpHelper.get(handler, "goal/all", true);
+
+        refreshAdapter();
+    }
+
+    private void refreshAdapter() {
         mGoalAdapter = new GoalListAdapter(homeActivity.getBaseContext(), mAllGoalList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mGoalAdapter);
+
+        mGoalAdapter.setOnItemClickListener(this);
     }
+
     /**
      * Set the listener of calendar and adapter
      */
-    private void setListener() {
-        mGoalAdapter.setOnItemClickListener(this);
-    }
 
     /**
      * Implement the onItemClick. When the users click the item of diary, it will go to another
