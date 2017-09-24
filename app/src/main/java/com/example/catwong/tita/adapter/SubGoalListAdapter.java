@@ -1,6 +1,11 @@
 package com.example.catwong.tita.adapter;
 
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,10 +13,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.catwong.tita.R;
+import com.example.catwong.tita.activity.HomeActivity;
+import com.example.catwong.tita.activity.LoginActivity;
+import com.example.catwong.tita.activity.RegisterActivity;
+import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.SubGoal;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.HttpHelper;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 
@@ -57,20 +69,32 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
         return new Holder(mView, mItemClickListener);
     }
 
+
     @Override
-    public void onBindViewHolder(final SubGoalListAdapter.Holder holder, int position) {
+    public void onBindViewHolder(final SubGoalListAdapter.Holder holder, final int position) {
         SubGoal subGoal = mSubGoalList.get(position);
-//        holder.mTitle.setText("" + subGoal.getGoalID());
         holder.mLocation.setText(subGoal.getEndTime().toString());
         holder.mDatetime.setText(subGoal.getStartTime().toString());
         holder.imgFinish.setTag(position);
         holder.imgMiss.setTag(position);
 
+        final Handler handler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                if (msg.what == HttpHelper.MSG_SUCCESS) {
+                    holder.imgMiss.setImageResource(R.drawable.ic_success);
+                    holder.imgFinish.setVisibility(View.GONE);
+                }
+
+                return true;
+            }
+        });
+
         holder.imgFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.imgMiss.setImageResource(R.drawable.ic_success);
-                holder.imgFinish.setVisibility(View.GONE);
+                HttpHelper.post(handler, "goal/check", "ugm_id=" +
+                        mSubGoalList.get(position).getGoalID(), true);
             }
         });
 
