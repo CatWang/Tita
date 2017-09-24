@@ -184,7 +184,7 @@ public class CalendarFragment extends Fragment implements
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                String body = "description=no&title=" + txtTitle.getText() + "&location=" + txtLocation.getText()
+                                String body = "gps=no&image_url=no&doc_link=no&homepage_link=no&description=no&title=" + txtTitle.getText() + "&location=" + txtLocation.getText()
                                         + "&start_time=" + txtStartTime.getText() + "&end_time=" + txtEndTime.getText() + "&type=";
                                 if (radPrivate.isChecked()) body += "private";
                                 if (radPublic.isChecked()) body += "public";

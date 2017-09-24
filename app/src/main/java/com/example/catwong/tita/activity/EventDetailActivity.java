@@ -34,6 +34,19 @@ public class EventDetailActivity extends AppCompatActivity {
 
     public boolean liked = false;
 
+    private String id;
+
+    private final Handler attendHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                imgLike.setImageResource(R.drawable.ic_heart_red);
+            }
+
+            return true;
+        }
+    });
+
     private final Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -45,12 +58,12 @@ public class EventDetailActivity extends AppCompatActivity {
 
                 txtTitle.setText(event.get("title").getAsString());
                 txtLocation.setText(event.get("location").getAsString());
-                txtStartTime.setText(event.get("start_time").getAsString());
-                txtEndTime.setText(event.get("end_time").getAsString());
+                txtStartTime.setText(event.get("start_time").getAsString()
+                        .replace("T", " ").replace("Z", " "));
+                txtEndTime.setText(event.get("end_time").getAsString()
+                        .replace("T", " ").replace("Z", " "));
                 txtLink.setText(event.get("homepage_link").getAsString());
                 txtDescription.setText(event.get("description").getAsString());
-
-
 
                 if (event.get("type").getAsString().equals("private")) {
                     imgLike.setVisibility(View.INVISIBLE);
@@ -61,7 +74,8 @@ public class EventDetailActivity extends AppCompatActivity {
                         @Override
                         public void onClick(View v) {
                             if (!liked) {
-                                imgLike.setImageResource(R.drawable.ic_heart_red);
+                                HttpHelper.post(attendHandler, "event/like", "event_id=" + id ,true);
+                                HttpHelper.post(attendHandler, "event/attend", "event_id=" + id ,true);
                                 liked = true;
                             } else {
                                 liked = false;
@@ -83,10 +97,11 @@ public class EventDetailActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.fragement_event_detail);
 
-        HttpHelper.get(handler, "event/" + getIntent().getStringExtra("id"), true);
+        id = getIntent().getStringExtra("id");
+
+        HttpHelper.get(handler, "event/" + id, true);
 
         boolean added = getIntent().getBooleanExtra("added", false);
-
 
         txtTitle = (TextView) findViewById(R.id.detail_event_title);
         txtMore = (TextView) findViewById(R.id.detail_txt_more);
