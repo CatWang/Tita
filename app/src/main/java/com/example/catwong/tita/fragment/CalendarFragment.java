@@ -31,6 +31,7 @@ import com.example.catwong.tita.adapter.EventListAdapter;
 import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.CustomViewPager;
 import com.example.catwong.tita.util.HttpHelper;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.google.gson.JsonArray;
@@ -240,7 +241,6 @@ public class CalendarFragment extends Fragment implements
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(firstDayOfNewMonth.getTime())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(firstDayOfNewMonth.getTime())));
         showDiaryBasedOnDate(firstDayOfNewMonth);
-
 }
 
     /**

@@ -6,16 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewParent;
 import android.view.Window;
 import android.widget.RadioButton;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.adapter.MyPagerAdapter;
+import com.example.catwong.tita.util.CustomViewPager;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
-        ViewPager.OnPageChangeListener{
+        CustomViewPager.OnPageChangeListener{
 
-    private ViewPager viewPager;
+    private CustomViewPager viewPager;
 
     private RadioButton radio_calendar;
     private RadioButton radio_finding;
@@ -35,8 +37,8 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void initTabs() {
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-
+        viewPager = (CustomViewPager) findViewById(R.id.viewpager);
+        viewPager.setPagingEnabled(false);
         // radio group
         radio_calendar = (RadioButton) findViewById(R.id.radio_calendar);
         radio_finding = (RadioButton) findViewById(R.id.radio_finding);
@@ -110,6 +112,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrollStateChanged(int state) { }
+
 
 
 }
