@@ -3,6 +3,7 @@ package com.example.catwong.tita.model;
 import android.os.Parcelable;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 
 /**
@@ -20,25 +21,58 @@ public class Event implements Serializable{
     private String mImageUrl;
     private String mDocLink;
     private String mHomepageLink;
-    private String mType;
+    private int mType;
+    private ArrayList<String> keywords;
+    private boolean added;
 
     public Event() {
 
     }
 
-    public Event(long id, String title, Date startTime, Date endTime, String location, String gps, String description, String imageURL, String docLink, String homepageLink, String type) {
+    public Event(long id, String title, Date startTime,
+                 Date endTime, String location,
+                 int type) {
         eventID = id;
         mtitle = title;
         mStartTime = startTime;
         mEndTime = endTime;
         mLocation = location;
-        mGps = gps;
-        mDescription = description;
-        mImageUrl = imageURL;
-        mDocLink = docLink;
-        mHomepageLink = homepageLink;
         mType = type;
+        keywords = new ArrayList<>();
+        mGps = "";
+        mDescription = "";
+        mImageUrl = "";
+        mDocLink = "";
+        mHomepageLink = "";
+        added = false;
+    }
 
+    public boolean isAdded() {
+        return added;
+    }
+
+    public void setAdded(boolean added) {
+        this.added = added;
+    }
+
+    public void setKeywords(ArrayList<String> keywords) {
+        for (String keyword: keywords) {
+            this.keywords.add(keyword);
+        }
+    }
+
+    public ArrayList<String> getKeywords() {
+        return keywords;
+    }
+
+    public String getKeywordString() {
+        String res = "";
+        for (String word : keywords) {
+            res += word;
+            res += ", ";
+        }
+
+        return res.substring(0, res.length() - 2);
     }
 
     public long getEventID() {
@@ -122,11 +156,15 @@ public class Event implements Serializable{
         this.mHomepageLink = mHomepageLink;
     }
 
-    public String getType() {
+    public int getType() {
         return mType;
     }
 
-    public void setType(String mType) {
+    public void setType(int mType) {
         this.mType = mType;
+    }
+
+    public String toString() {
+        return getTitle() + ", " + getStartTime() + ", " + getLocation();
     }
 }

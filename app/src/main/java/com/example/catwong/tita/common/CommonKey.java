@@ -14,4 +14,7 @@ public class CommonKey {
     public static final String NULL = "null";
 
     public static final String EVENT = "event";
+
+    public static final int TYPE_PRIVATE = 1;
+    public static final int TYPE_PUBLIC = 2;
 }

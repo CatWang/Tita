@@ -106,9 +106,18 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         startDate = Common.dateFormat.getDate("09/24/2017 18:00");
         endDate = Common.dateFormat.getDate("09/24/2017 20:00");
 
+        ArrayList<String> keywords = new ArrayList<>();
+        keywords.add("meeting");
+        keywords.add("machine learning");
+
         for (int i = 0; i < 10; ++i) {
-            Event event = new Event(i, "Event", startDate, endDate,
-                    "RMC", "123", "description", "123", "doclink", "123", "F");
+            Event event = new Event(i, "Meeting", startDate, endDate,
+                    "1070 RMC", CommonKey.TYPE_PUBLIC);
+            event.setAdded(true);
+            event.setKeywords(keywords);
+            event.setDescription("Machine Learning Meeting");
+            event.setHomepageLink("www.catwangmenma.com");
+
             mAllEventList.add(event);
         }
         Collections.reverse(mAllEventList);
@@ -181,10 +190,15 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     @Override
     public void onItemClick(View view, int position) {
         Event event = mAllEventList.get(position);
+        if (event != null) {
+            System.out.println("Debug-info" + event.toString());
+        } else {
+            System.out.println("Debug-info" + " true");
+        }
         //Long id = event.getEventID();
-        Intent intent = new Intent(homeActivity, EventDetailActivity.class);
+        Intent intent = new Intent(getContext(), EventDetailActivity.class);
         intent.putExtra(CommonKey.EVENT, event);
-        startActivity(intent);
+        getContext().startActivity(intent);
     }
 
 }

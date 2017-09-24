@@ -47,4 +47,8 @@ public class CustomDateFormat {
         String time = dateToHourStringFormatter.format(date);
         return time;
     }
+
+    public String getDateTimeStringFromDate(Date date) {
+        return mFormatter.format(date);
+    }
 }

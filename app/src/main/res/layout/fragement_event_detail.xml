@@ -24,20 +24,22 @@
             android:textStyle="bold"/>
 
         <ImageView
-            android:id="@+id/detail_icon_add"
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:src="@drawable/ic_add"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="10dp"/>
-
-        <ImageView
             android:id="@+id/detail_icon_like"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:src="@drawable/ic_heart_pink"
-            android:layout_toLeftOf="@id/detail_icon_add"
+            android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"/>
+
+        <ImageView
+            android:id="@+id/detail_icon_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_add"
+            android:layout_toLeftOf="@id/detail_icon_like"
+            android:layout_marginRight="10dp"/>
+
+
 
 
 
@@ -194,13 +196,14 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="250dp"
         android:paddingLeft="40dp"
         android:layout_marginTop="8dp"
         android:scrollbarStyle="insideOverlay"
         android:scrollbars="vertical">
 
         <TextView
+            android:id="@+id/detail_description"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TestTestTest"
