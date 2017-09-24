@@ -40,6 +40,16 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="23dp"/>
 
+        <ImageView
+            android:id="@+id/add_follow"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_search"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="10dp"
+            android:layout_toLeftOf="@+id/add_goal"
+            android:layout_marginRight="8dp"/>
+
     </RelativeLayout>
 
 

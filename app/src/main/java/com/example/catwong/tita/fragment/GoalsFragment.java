@@ -51,6 +51,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
     private ImageView imgAddGaol;
+    private ImageView imgSearchFollow;
 
     private final Handler handler = new Handler(new Handler.Callback() {
         @Override
@@ -134,6 +135,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
 
         mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.goal_main_recyclerView);
         imgAddGaol = (ImageView) getView().findViewById(R.id.add_goal);
+        imgSearchFollow = (ImageView) getView().findViewById(R.id.add_follow);
 
         imgAddGaol.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,6 +190,35 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
             }
         });
 
+        imgSearchFollow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alter = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+
+                View v_iew=inflater.inflate(R.layout.layout_search_follow, null);
+                alter.setView(v_iew);
+
+                alter.setTitle("Search User");
+                final TextView txtUsername = (TextView) v_iew.findViewById(R.id.search_user_name);
+
+                alter.setPositiveButton("Link",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "Search");
+
+                            }
+                        }).setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "Cancel");
+                            }
+                        });
+                alter.show();
+            }
+        });
     }
     private void setAdapter() {
         Calendar c = Calendar.getInstance();

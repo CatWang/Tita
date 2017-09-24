@@ -53,7 +53,7 @@ public class EventDetailActivity extends AppCompatActivity {
 
 
                 if (event.get("type").getAsString().equals("private")) {
-                    imgLike.setVisibility(View.GONE);
+                    imgLike.setVisibility(View.INVISIBLE);
                 } else {
                     imgLike.setVisibility(View.VISIBLE);
 
