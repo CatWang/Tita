@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.activity.GoalDailyActivity;
@@ -55,6 +56,8 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
         @Override
         public boolean handleMessage(Message msg) {
             if (msg.what == HttpHelper.MSG_SUCCESS) {
+                Toast.makeText(homeActivity, "ok!", Toast.LENGTH_SHORT).show();
+
                 mAllGoalList.clear();
 
                 JsonObject jsonObject = (JsonObject) msg.obj;

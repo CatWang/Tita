@@ -5,6 +5,8 @@ import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
@@ -14,13 +16,18 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.activity.HomeActivity;
 import com.example.catwong.tita.activity.LikeListActivity;
 import com.example.catwong.tita.activity.MainActivity;
 import com.example.catwong.tita.common.CommonKey;
+import com.example.catwong.tita.model.Goal;
+import com.example.catwong.tita.util.HttpHelper;
 import com.example.catwong.tita.util.PreferencesManager;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -30,6 +37,17 @@ public class UserFragment extends Fragment {
     private RelativeLayout layoutEmailLink, layoutFbLink, layoutTwLink;
     private RelativeLayout layoutLike, layoutLogout;
     private HomeActivity homeActivity;
+
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                Toast.makeText(homeActivity, "ok!", Toast.LENGTH_SHORT).show();
+            }
+
+            return true;
+        }
+    });
 
 
     public UserFragment() {
@@ -79,21 +97,16 @@ public class UserFragment extends Fragment {
 
                 alter.setTitle("Link Email");
                 final TextView txtEmailAdd = (TextView) v_iew.findViewById(R.id.link_email_input);
-                final TextView txtEmaliPwd = (TextView) v_iew.findViewById(R.id.link_pwd_input);
+                final TextView txtEmailPwd = (TextView) v_iew.findViewById(R.id.link_pwd_input);
 
-                alter.setPositiveButton("Link",
-                                new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialog, int which) {
-                                        Log.i("Person Dialog", "modify");
-                                        prefManage.putString(CommonKey.EMAIL_ADD,
-                                                String.valueOf(txtEmailAdd.getText()));
-                                        prefManage.putString(CommonKey.EMAIL_PWD,
-                                                String.valueOf(txtEmaliPwd.getText()));
-                                        System.out.println("Debug_info" +
-                                                String.valueOf(txtEmailAdd.getText()));
-                                    }
-                                }).setNegativeButton("Cancel",
+                alter.setPositiveButton("Add",
+                        new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialog, int which) {
+                                    String body = "email=" + txtEmailAdd.getText() + "&pwd=" + txtEmailPwd.getText();
+                                    HttpHelper.post(handler, "user/add_email", body, true);
+                                }
+                            }).setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
