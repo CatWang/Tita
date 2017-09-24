@@ -4,6 +4,8 @@ package com.example.catwong.tita.fragment;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,6 +23,9 @@ import com.example.catwong.tita.adapter.FindingListAdapter;
 import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.HttpHelper;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,17 +37,50 @@ import java.util.Date;
 public class FindingFragment extends Fragment implements FindingListAdapter.MyItemClickListener{
     private RecyclerView mRecyclerView;
     private FindingListAdapter mFindingAdapter;
-    private ArrayList<Event> mAllEventList;
+    private ArrayList<Event> mAllEventList = new ArrayList<>();
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
     private TextView btnFriend;
     private TextView btnEmail;
     private TextView btnLocal;
 
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                mAllEventList.clear();
 
-    public FindingFragment() {
-        // Required empty public constructor
-    }
+                JsonObject jsonObject = (JsonObject) msg.obj;
+
+                JsonArray array = jsonObject.get("events").getAsJsonArray();
+                for(int i = 0; i < array.size(); i++){
+                    JsonObject subObject = array.get(i).getAsJsonObject();
+
+                    Event event = new Event();
+                    event.setEventID(subObject.get("id").getAsLong());
+                    event.setTitle(subObject.get("title").getAsString());
+                    event.setDescription(subObject.get("description").getAsString());
+                    event.setLocation(subObject.get("location").getAsString());
+                    event.setGps(subObject.get("gps").getAsString());
+                    event.setLocation(subObject.get("location").getAsString());
+                    event.setImageUrl(subObject.get("image_url").getAsString() == null? "" : subObject.get("image_url").getAsString());
+                    event.setDocLink(subObject.get("doc_link").getAsString());
+                    event.setHomepageLink(subObject.get("homepage_link").getAsString());
+                    event.setStartTime(HttpHelper.getDate(subObject.get("start_time").getAsString().replace('T', ' ')));
+                    event.setEndTime(HttpHelper.getDate(subObject.get("end_time").getAsString().replace('T', ' ')));
+
+                    mAllEventList.add(event);
+                }
+
+                setAdapter();
+            }
+
+            return true;
+        }
+    });
+
+
+    public FindingFragment() { }
 
     @SuppressLint("ValidFragment")
     public  FindingFragment(HomeActivity homeActivity) {
@@ -58,8 +96,6 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_calendar);
-
     }
 
     /**
@@ -82,66 +118,26 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
     }
 
     private void loadList(int type) {
-        mAllEventList = new ArrayList<Event> ();
-        Date startDate, endDate;
+        mAllEventList.clear();
 
-        startDate = Common.dateFormat.getDate("09/24/2017 18:00");
-        endDate = Common.dateFormat.getDate("09/24/2017 20:00");
-        String title;
-        ArrayList<String> keywords = new ArrayList<>();
-        keywords.add("meeting");
-        keywords.add("machine learning");
         switch (type) {
             case 0:
-                title = "Friend";
-                mAllEventList.clear();
-                for (int i = 0; i < 10; ++i) {
-                    Event event = new Event(i, title, startDate, endDate,
-                            "1070 RMC", CommonKey.TYPE_PUBLIC);
-                    event.setAdded(false);
-                    event.setKeywords(keywords);
-                    event.setDescription("Machine Learning Meeting");
-                    event.setHomepageLink("www.catwangmenma.com");
+//                HttpHelper.get(handler, HttpHelper.EVENT_DATE_URL + url, true);
 
-                    mAllEventList.add(event);
-                }
                 break;
             case 1:
-                title = "Email";
-                mAllEventList.clear();
-                for (int i = 0; i < 10; ++i) {
-                    Event event = new Event(i, title, startDate, endDate,
-                            "1070 RMC", CommonKey.TYPE_PUBLIC);
-                    event.setAdded(false);
-                    event.setKeywords(keywords);
-                    event.setDescription("Machine Learning Meeting");
-                    event.setHomepageLink("www.catwangmenma.com");
+//                HttpHelper.get(handler, HttpHelper.EVENT_DATE_URL + url, true);
 
-                    mAllEventList.add(event);
-                }
                 break;
             case 2:
-                title = "Local";
-                mAllEventList.clear();
-                for (int i = 0; i < 10; ++i) {
-                    Event event = new Event(i, title, startDate, endDate,
-                            "1070 RMC", CommonKey.TYPE_PUBLIC);
-                    event.setAdded(false);
-                    event.setKeywords(keywords);
-                    event.setDescription("Machine Learning Meeting");
-                    event.setHomepageLink("www.catwangmenma.com");
+                HttpHelper.get(handler, "event/all", false);
 
-                    mAllEventList.add(event);
-                }
                 break;
-            default:
-                title = "Haha";
+
         }
-        Collections.reverse(mAllEventList);
     }
 
     private void setAdapter() {
-
         mFindingAdapter = new FindingListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mFindingAdapter);
@@ -171,7 +167,6 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
                 setAdapter();
             }
         });
-        //mFindingAdapter.setOnItemClickListener(this);
     }
 
 
@@ -185,7 +180,7 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
         }
         //Long id = event.getEventID();
         Intent intent = new Intent(getContext(), EventDetailActivity.class);
-        intent.putExtra(CommonKey.EVENT, event);
+        intent.putExtra("id", "" + event.getEventID());
         getContext().startActivity(intent);
     }
 }
