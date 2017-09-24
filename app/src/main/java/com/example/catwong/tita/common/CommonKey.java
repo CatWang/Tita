@@ -26,4 +26,6 @@ public class CommonKey {
 
     public static final String TW_USERNAME = "tw_username";
     public static final String TW_PWD = "tw_pwd";
+
+    public static final String GOAL = "goal";
 }

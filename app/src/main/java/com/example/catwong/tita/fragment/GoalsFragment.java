@@ -22,6 +22,7 @@ import com.example.catwong.tita.activity.HomeActivity;
 import com.example.catwong.tita.activity.RegisterActivity;
 import com.example.catwong.tita.adapter.EventListAdapter;
 import com.example.catwong.tita.adapter.GoalListAdapter;
+import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.model.Goal;
 import com.example.catwong.tita.util.Common;
@@ -157,10 +158,8 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     @Override
     public void onItemClick(View view, int position) {
         Goal goal = mAllGoalList.get(position);
-//        Long id = event.getId();
         Intent intent = new Intent(homeActivity, RegisterActivity.class);
-//        intent.putExtra(Constants.EXTRA_DIARY, id);
-//        startActivityForResult(intent, REQUEST_CODE);
+        intent.putExtra(CommonKey.GOAL, goal);
         startActivity(intent);
     }
 }

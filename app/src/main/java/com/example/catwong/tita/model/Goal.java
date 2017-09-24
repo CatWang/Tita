@@ -1,5 +1,6 @@
 package com.example.catwong.tita.model;
 
+import java.io.Serializable;
 import java.security.interfaces.DSAKey;
 import java.util.Date;
 
@@ -7,7 +8,7 @@ import java.util.Date;
  * Created by LENOVO on 2017/9/23.
  */
 
-public class Goal {
+public class Goal implements Serializable{
 
 
     private String mDescription;
