@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -57,13 +58,23 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(SubGoalListAdapter.Holder holder, int position) {
+    public void onBindViewHolder(final SubGoalListAdapter.Holder holder, int position) {
         SubGoal subGoal = mSubGoalList.get(position);
 //        holder.mTitle.setText("" + subGoal.getGoalID());
         holder.mLocation.setText(subGoal.getEndTime().toString());
         holder.mDatetime.setText(subGoal.getStartTime().toString());
+        holder.imgFinish.setTag(position);
+        holder.imgMiss.setTag(position);
 
+        holder.imgFinish.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.imgMiss.setVisibility(View.GONE);
+            }
+        });
     }
+
+
 
     @Override
     public int getItemCount() {
@@ -79,6 +90,7 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
         private final TextView mDatetime;
         private LinearLayout mLayout;
         private MyItemClickListener mListener;
+        private ImageView imgMiss, imgFinish;
 
         /**
          * Constructor of Holder to bind the widgets and set the clickListener and longClickListener of every item
@@ -92,6 +104,8 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
             mLocation = (TextView) view.findViewById(R.id.subGoal_main_location_textview);
             mDatetime = (TextView) view.findViewById(R.id.subGoal_main_datetime_textview);
             mLayout = (LinearLayout) view.findViewById(R.id.subGoal_list_item_linearlayout);
+            imgMiss = (ImageView) view.findViewById(R.id.goal_daily_miss);
+            imgFinish = (ImageView) view.findViewById(R.id.goal_daily_finish);
             mListener = listener;
             mLayout.setOnClickListener(this);
         }
