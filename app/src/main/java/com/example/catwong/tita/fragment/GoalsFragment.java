@@ -18,7 +18,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
-import com.example.catwong.tita.activity.GoalDailyActivity;
 import com.example.catwong.tita.activity.HomeActivity;
 import com.example.catwong.tita.activity.RegisterActivity;
 import com.example.catwong.tita.adapter.EventListAdapter;
@@ -76,7 +75,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
         super.onStart();
         init();
         setAdapter();
-        setListener();
+//        setListener();
     }
 
     /**
@@ -159,8 +158,8 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     @Override
     public void onItemClick(View view, int position) {
         Goal goal = mAllGoalList.get(position);
-        Intent intent = new Intent(homeActivity, GoalDailyActivity.class);
-//        intent.putExtra(CommonKey.GOAL, goal);
+        Intent intent = new Intent(homeActivity, RegisterActivity.class);
+        intent.putExtra(CommonKey.GOAL, goal);
         startActivity(intent);
     }
 }

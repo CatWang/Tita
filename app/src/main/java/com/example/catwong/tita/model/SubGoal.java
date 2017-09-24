@@ -1,7 +1,5 @@
 package com.example.catwong.tita.model;
 
-import java.util.Date;
-
 /**
  * Created by LENOVO on 2017/9/23.
  */
@@ -11,8 +9,8 @@ public class SubGoal {
 
     private int mUserID;
     private int mGoalID;
-    private Date mStartTime;
-    private Date mEndTime;
+    private String mStartTime;
+    private String mEndTime;
     private String mIsShared;
     private String mSharedTime;
     private String mIsChecked;
@@ -22,7 +20,7 @@ public class SubGoal {
 
     }
 
-    public SubGoal(int userID, int goalID, Date startTime, Date endTime, String isShared, String sharedTime, String isChecked, String checkTime) {
+    public SubGoal(int userID, int goalID, String startTime, String endTime, String isShared, String sharedTime, String isChecked, String checkTime) {
         mUserID = userID;
         mGoalID = goalID;
         mStartTime = startTime;
@@ -33,67 +31,67 @@ public class SubGoal {
         mCheckedTime = checkTime;
     }
 
-    public int getUserID() {
+    public int getmUserID() {
         return mUserID;
     }
 
-    public void setUserID(int mUserID) {
+    public void setmUserID(int mUserID) {
         this.mUserID = mUserID;
     }
 
-    public int getGoalID() {
+    public int getmGoalID() {
         return mGoalID;
     }
 
-    public void setGoalID(int mGoalID) {
+    public void setmGoalID(int mGoalID) {
         this.mGoalID = mGoalID;
     }
 
-    public Date getStartTime() {
+    public String getmStartTime() {
         return mStartTime;
     }
 
-    public void setStartTime(Date mStartTime) {
+    public void setmStartTime(String mStartTime) {
         this.mStartTime = mStartTime;
     }
 
-    public Date getEndTime() {
+    public String getmEndTime() {
         return mEndTime;
     }
 
-    public void setEndTime(Date mEndTime) {
+    public void setmEndTime(String mEndTime) {
         this.mEndTime = mEndTime;
     }
 
-    public String getIsShared() {
+    public String getmIsShared() {
         return mIsShared;
     }
 
-    public void setIsShared(String mIsShared) {
+    public void setmIsShared(String mIsShared) {
         this.mIsShared = mIsShared;
     }
 
-    public String getSharedTime() {
+    public String getmSharedTime() {
         return mSharedTime;
     }
 
-    public void setSharedTime(String mSharedTime) {
+    public void setmSharedTime(String mSharedTime) {
         this.mSharedTime = mSharedTime;
     }
 
-    public String getIsChecked() {
+    public String getmIsChecked() {
         return mIsChecked;
     }
 
-    public void setIsChecked(String mIsChecked) {
+    public void setmIsChecked(String mIsChecked) {
         this.mIsChecked = mIsChecked;
     }
 
-    public String getCheckedTime() {
+    public String getmCheckedTime() {
         return mCheckedTime;
     }
 
-    public void setCheckedTime(String mCheckedTime) {
+    public void setmCheckedTime(String mCheckedTime) {
         this.mCheckedTime = mCheckedTime;
     }
 }
