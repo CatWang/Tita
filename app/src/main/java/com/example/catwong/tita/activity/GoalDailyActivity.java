@@ -16,6 +16,7 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 
 /**
@@ -79,6 +80,7 @@ public class GoalDailyActivity extends AppCompatActivity {
     }
 
     private void refreshAdapter() {
+        Collections.reverse(mAllSubGoalList);
         mSubGoalAdapter = new SubGoalListAdapter(this.getBaseContext(), mAllSubGoalList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getBaseContext()));
         mRecyclerView.setAdapter(mSubGoalAdapter);
