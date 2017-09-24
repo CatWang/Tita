@@ -10,12 +10,12 @@
     android:clipToPadding="true">
 
   <android.support.v7.widget.RecyclerView
-      android:layout_width="368dp"
-      android:layout_height="495dp"
+      android:layout_width="match_parent"
+      android:layout_height="match_parent"
       android:clipToPadding="false"
       tools:layout_editor_absoluteY="8dp"
       tools:layout_editor_absoluteX="8dp"
-      android:id="@+id/subGoal_daily_recyclerView"
+      android:id="@+id/goal_daily_recyclerView"
       android:orientation="vertical"
       android:layout_alignParentTop="true"
       android:layout_alignParentLeft="true"
