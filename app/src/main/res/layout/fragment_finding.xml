@@ -49,7 +49,7 @@
             android:textSize="18dp"
             android:textColor="@color/colorTextButton"
             android:textStyle="bold"
-            android:text="Friend"
+            android:text="Like"
             android:layout_gravity="center"
             android:gravity="center"/>
         <ImageView

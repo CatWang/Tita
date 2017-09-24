@@ -59,7 +59,7 @@ public class LikeListActivity extends AppCompatActivity implements LikeListAdapt
         keywords.add("machine learning");
 
         for (int i = 0; i < 10; ++i) {
-            Event event = new Event(i, "Favorite", startDate, endDate,
+            Event event = new Event(i, "Friend", startDate, endDate,
                     "1070 RMC", CommonKey.TYPE_PUBLIC);
             event.setAdded(true);
             event.setKeywords(keywords);
