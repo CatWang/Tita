@@ -24,7 +24,7 @@
             android:layout_alignParentRight="true"/>
 
         <LinearLayout
-            android:id="@+id/diary_list_item_linearlayout"
+            android:id="@+id/like_list_item_linearlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -45,7 +45,7 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/diary_main_title_textview"
+                    android:id="@+id/like_main_title_textview"
                     android:layout_width="300dp"
                     android:layout_height="0dp"
                     android:layout_marginBottom="@dimen/small_margin"
@@ -69,7 +69,7 @@
                         android:src="@drawable/ic_location"/>
 
                     <TextView
-                        android:id="@+id/diary_main_location_textview"
+                        android:id="@+id/like_main_location_textview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/small_tiny_margin"
@@ -92,7 +92,7 @@
                         android:src="@drawable/ic_time"/>
 
                     <TextView
-                        android:id="@+id/diary_main_datetime_textview"
+                        android:id="@+id/like_main_datetime_textview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/small_tiny_margin"
