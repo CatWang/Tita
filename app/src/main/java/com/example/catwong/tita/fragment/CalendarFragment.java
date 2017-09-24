@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Build;
 import android.support.v7.app.AlertDialog;
@@ -13,6 +15,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
@@ -22,12 +25,16 @@ import com.example.catwong.tita.R;
 //import com.example.catwong.tita.adapter.EventListAdapter;
 import com.example.catwong.tita.activity.EventDetailActivity;
 import com.example.catwong.tita.activity.HomeActivity;
+import com.example.catwong.tita.activity.LoginActivity;
 import com.example.catwong.tita.activity.RegisterActivity;
 import com.example.catwong.tita.adapter.EventListAdapter;
 import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.util.Common;
+import com.example.catwong.tita.util.HttpHelper;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonObject;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
 import java.text.DateFormat;
@@ -46,12 +53,54 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     private RecyclerView mRecyclerView;
     private EventListAdapter mEventAdapter;
     private Date mDate;
-    private ArrayList<Event> mAllEventList;
+    private ArrayList<Event> mAllEventList = new ArrayList<>();
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
     private ImageView imgAddCalendar;
 
     private final static int REQUEST_CODE = 1;
+
+    private final Handler handler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                mAllEventList.clear();
+
+                JsonObject jsonObject = (JsonObject) msg.obj;
+
+                JsonArray array = jsonObject.get("events").getAsJsonArray();
+                for(int i = 0; i < array.size(); i++){
+                    JsonObject subObject = array.get(i).getAsJsonObject();
+
+                    Event event = new Event();
+                    event.setEventID(subObject.get("id").getAsLong());
+                    event.setTitle(subObject.get("title").getAsString());
+                    event.setDescription(subObject.get("description").getAsString());
+                    event.setLocation(subObject.get("location").getAsString());
+                    event.setGps(subObject.get("gps").getAsString());
+                    event.setLocation(subObject.get("location").getAsString());
+                    event.setImageUrl(subObject.get("image_url").getAsString());
+                    event.setDocLink(subObject.get("doc_link").getAsString());
+                    event.setHomepageLink(subObject.get("homepage_link").getAsString());
+                    try {
+                        event.setStartTime(HttpHelper.getDate(subObject.get("start_time").getAsString().replace('T', ' ')));
+                        event.setEndTime(HttpHelper.getDate(subObject.get("end_time").getAsString().replace('T', ' ')));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println("aaaa" + event.getStartTime());
+
+                    mAllEventList.add(event);
+                }
+
+                refreshAdapter();
+            }
+
+            return true;
+        }
+    });
+
 
     public CalendarFragment(){
 
@@ -111,10 +160,6 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
                 alter.setView(v_iew);
 
                 alter.setTitle("Add Event");
-                final TextView txtTile = (TextView) v_iew.findViewById(R.id.add_event_title);
-                final TextView txtLocation = (TextView) v_iew.findViewById(R.id.add_event_location);
-                final TextView txtStartTime = (TextView) v_iew.findViewById(R.id.add_event_start_time);
-                final TextView txtEndTime = (TextView) v_iew.findViewById(R.id.add_event_end_time);
 
                 alter.setPositiveButton("Link",
                         new DialogInterface.OnClickListener() {
@@ -135,31 +180,21 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         });
     }
 
-
     private void setAdapter() {
-//        mAllEventList = (ArrayList<Event>) Event.listAll(Event.class);
-        mAllEventList = new ArrayList<Event> ();
+        Calendar c = Calendar.getInstance();
+        String today = HttpHelper.getDateString(c);
 
-        Date startDate, endDate;
+        int day = c.get(Calendar.DATE);
+        c.set(Calendar.DATE, day + 1);
+        String tomorrow = HttpHelper.getDateString(c);
 
-        startDate = Common.dateFormat.getDate("09/24/2017 18:00");
-        endDate = Common.dateFormat.getDate("09/24/2017 20:00");
+        String url = "?s=" + today + "&e=" + tomorrow;
+        HttpHelper.get(handler, HttpHelper.EVENT_DATE_URL + url, true);
 
-        ArrayList<String> keywords = new ArrayList<>();
-        keywords.add("meeting");
-        keywords.add("machine learning");
+        refreshAdapter();
+    }
 
-        for (int i = 0; i < 10; ++i) {
-            Event event = new Event(i, "Meeting", startDate, endDate,
-                    "1070 RMC", CommonKey.TYPE_PUBLIC);
-            event.setAdded(true);
-            event.setKeywords(keywords);
-            event.setDescription("Machine Learning Meeting");
-            event.setHomepageLink("www.catwangmenma.com");
-
-            mAllEventList.add(event);
-        }
-        Collections.reverse(mAllEventList);
+    private void refreshAdapter() {
         mEventAdapter = new EventListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mEventAdapter);
@@ -184,8 +219,17 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(dateClicked.getTime())));
 //        Toast.makeText(getBaseContext(), "Day was clicked: " + dateClicked, Toast.LENGTH_LONG).show();
         mDate = dateClicked;
-//        Log.d(TAG, DAY_CLICK + dateClicked);
-//        showDiaryBasedOnDate(dateClicked);
+
+        String cur = HttpHelper.getDateString(mDate);
+
+        Calendar c = Calendar.getInstance();
+        c.setTime(mDate);
+        c.set(Calendar.DATE, c.get(Calendar.DATE) + 1);
+
+        String next = HttpHelper.getDateString(c);
+
+        String url = "?s=" + cur + "&e=" + next;
+        HttpHelper.get(handler, HttpHelper.EVENT_DATE_URL + url, true);
     }
 
     /**
@@ -198,7 +242,8 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(firstDayOfNewMonth.getTime())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(firstDayOfNewMonth.getTime())));
         showDiaryBasedOnDate(firstDayOfNewMonth);
-    }
+
+}
 
     /**
      * Show the list of diaries which are written in the selected date
