@@ -46,7 +46,8 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Date;
 
-public class CalendarFragment extends Fragment implements CompactCalendarView.CompactCalendarViewListener, EventListAdapter.MyItemClickListener{
+public class CalendarFragment extends Fragment implements
+        CompactCalendarView.CompactCalendarViewListener, EventListAdapter.MyItemClickListener{
     private CompactCalendarView mCompactCalendarView;
     private TextView mYearTextView;
     private TextView mMonTextView;
@@ -82,14 +83,8 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
                     event.setImageUrl(subObject.get("image_url").getAsString());
                     event.setDocLink(subObject.get("doc_link").getAsString());
                     event.setHomepageLink(subObject.get("homepage_link").getAsString());
-                    try {
-                        event.setStartTime(HttpHelper.getDate(subObject.get("start_time").getAsString().replace('T', ' ')));
-                        event.setEndTime(HttpHelper.getDate(subObject.get("end_time").getAsString().replace('T', ' ')));
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-
-                    System.out.println("aaaa" + event.getStartTime());
+                    event.setStartTime(HttpHelper.getDate(subObject.get("start_time").getAsString().replace('T', ' ')));
+                    event.setEndTime(HttpHelper.getDate(subObject.get("end_time").getAsString().replace('T', ' ')));
 
                     mAllEventList.add(event);
                 }
@@ -197,6 +192,10 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     private void refreshAdapter() {
         mEventAdapter = new EventListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
+
+        mEventAdapter.setOnItemClickListener(this);
+
+
         mRecyclerView.setAdapter(mEventAdapter);
     }
 
@@ -205,7 +204,6 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
      */
     private void setListener() {
         mCompactCalendarView.setListener(this);
-        mEventAdapter.setOnItemClickListener(this);
     }
 
     /**
@@ -274,14 +272,8 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     @Override
     public void onItemClick(View view, int position) {
         Event event = mAllEventList.get(position);
-        if (event != null) {
-            System.out.println("Debug-info" + event.toString());
-        } else {
-            System.out.println("Debug-info" + " true");
-        }
-        //Long id = event.getEventID();
         Intent intent = new Intent(getContext(), EventDetailActivity.class);
-        intent.putExtra(CommonKey.EVENT, event);
+        intent.putExtra("id", "" + event.getEventID());
         getContext().startActivity(intent);
     }
 

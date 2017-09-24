@@ -169,6 +169,19 @@ public class HttpHelper {
 		return d;
 	}
 
+	public static Date getTime(String str) {
+		SimpleDateFormat s = new SimpleDateFormat("HH:mm:ss");
+
+		Date d = null;
+		try {
+			d = s.parse(str);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return d;
+	}
+
 //	public static String getDateTimeString(Date d) {
 //		SimpleDateFormat s = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 //
