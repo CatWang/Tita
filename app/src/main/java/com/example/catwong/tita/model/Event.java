@@ -34,83 +34,83 @@ public class Event {
 
     }
 
-    public String getMtitle() {
+    public String getTitle() {
         return mtitle;
     }
 
-    public void setMtitle(String mtitle) {
+    public void setTitle(String mtitle) {
         this.mtitle = mtitle;
     }
 
-    public String getmStartTime() {
+    public String getStartTime() {
         return mStartTime;
     }
 
-    public void setmStartTime(String mStartTime) {
+    public void setStartTime(String mStartTime) {
         this.mStartTime = mStartTime;
     }
 
-    public String getmEndTime() {
+    public String getEndTime() {
         return mEndTime;
     }
 
-    public void setmEndTime(String mEndTime) {
+    public void setEndTime(String mEndTime) {
         this.mEndTime = mEndTime;
     }
 
-    public String getmLocation() {
+    public String getLocation() {
         return mLocation;
     }
 
-    public void setmLocation(String mLocation) {
+    public void setLocation(String mLocation) {
         this.mLocation = mLocation;
     }
 
-    public String getmGps() {
+    public String getGps() {
         return mGps;
     }
 
-    public void setmGps(String mGps) {
+    public void setGps(String mGps) {
         this.mGps = mGps;
     }
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public void setmDescription(String mDescription) {
+    public void setDescription(String mDescription) {
         this.mDescription = mDescription;
     }
 
-    public String getmImageUrl() {
+    public String getImageUrl() {
         return mImageUrl;
     }
 
-    public void setmImageUrl(String mImageUrl) {
+    public void setImageUrl(String mImageUrl) {
         this.mImageUrl = mImageUrl;
     }
 
-    public String getmDocLink() {
+    public String getDocLink() {
         return mDocLink;
     }
 
-    public void setmDocLink(String mDocLink) {
+    public void setDocLink(String mDocLink) {
         this.mDocLink = mDocLink;
     }
 
-    public String getmHomepageLink() {
+    public String getHomepageLink() {
         return mHomepageLink;
     }
 
-    public void setmHomepageLink(String mHomepageLink) {
+    public void setHomepageLink(String mHomepageLink) {
         this.mHomepageLink = mHomepageLink;
     }
 
-    public String getmType() {
+    public String getType() {
         return mType;
     }
 
-    public void setmType(String mType) {
+    public void setType(String mType) {
         this.mType = mType;
     }
 }

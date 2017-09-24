@@ -50,13 +50,13 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 //        // fragment
 
-        FragmentPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager());
+        FragmentPagerAdapter pagerAdapter = new MyPagerAdapter(getSupportFragmentManager(), this);
         try{
             viewPager.setAdapter(pagerAdapter);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        viewPager.setOffscreenPageLimit(3);
+        viewPager.setOffscreenPageLimit(4);
         viewPager.addOnPageChangeListener(this);
     }
 
