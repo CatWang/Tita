@@ -52,28 +52,58 @@
                 android:textColor="@color/toolPrimary"
                 android:textSize="@dimen/headline" />
         </LinearLayout>
-
-        <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
-            android:id="@+id/compactcalendar_view"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="@dimen/calendar_height"
-            app:compactCalendarBackgroundColor="@color/colorPrimary"
-            app:compactCalendarCurrentDayBackgroundColor="@color/calendar_current_day"
-            app:compactCalendarCurrentSelectedDayBackgroundColor="@color/calendar_selected_day_background"
-            app:compactCalendarMultiEventIndicatorColor="@color/toolPrimary"
-            app:compactCalendarTextColor="@color/toolPrimary"
-            app:compactCalendarTextSize="@dimen/caption"
+            android:layout_height="@dimen/calendar_height">
+            <com.github.sundeepk.compactcalendarview.CompactCalendarView xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:id="@+id/compactcalendar_view"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/calendar_height"
+                app:compactCalendarBackgroundColor="@color/colorPrimary"
+                app:compactCalendarCurrentDayBackgroundColor="@color/calendar_current_day"
+                app:compactCalendarCurrentSelectedDayBackgroundColor="@color/calendar_selected_day_background"
+                app:compactCalendarMultiEventIndicatorColor="@color/toolPrimary"
+                app:compactCalendarTextColor="@color/toolPrimary"
+                app:compactCalendarTextSize="@dimen/caption"
 
-            />
+                />
 
-        <android.support.v7.widget.RecyclerView xmlns:android="http://schemas.android.com/apk/res/android"
+            <!--<android.support.design.widget.FloatingActionButton-->
+                <!--android:id="@+id/floatingActionButton"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:clickable="true"-->
+                <!--app:fabSize="mini"-->
+                <!--app:srcCompat="@drawable/ic_cal_add"-->
+                <!--android:backgroundTint="@color/calendar_current_day"-->
+                <!--android:layout_alignParentRight="true"-->
+                <!--android:layout_alignParentBottom="true"/>-->
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_add"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="10dp"
+                android:layout_marginBottom="8dp" />
+        </RelativeLayout>
+
+
+
+        <android.support.v7.widget.RecyclerView
             android:id="@+id/diary_main_recyclerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:clipToPadding="false"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true">
 
         </android.support.v7.widget.RecyclerView>
+
+
+
+
 
     </LinearLayout>
 
