@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -23,6 +24,7 @@ public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.
     private ArrayList<Event> mEventList;
     private MyItemClickListener mItemClickListener = null;
     private Context mContext;
+    private ArrayList<Boolean> liked, added;
 
     /**
      * Define the ItemClickListener interface
@@ -41,6 +43,12 @@ public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.
         mInflater = LayoutInflater.from(context);
         mContext = context;
         mEventList = data;
+        liked = new ArrayList<>();
+        added = new ArrayList<>();
+        for (Event e : mEventList) {
+            liked.add(false);
+            added.add(false);
+        }
     }
 
     /**
@@ -59,12 +67,38 @@ public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.
     }
 
     @Override
-    public void onBindViewHolder(FindingListAdapter.Holder holder, int position) {
+    public void onBindViewHolder(final FindingListAdapter.Holder holder, final int position) {
         Event event = mEventList.get(position);
         holder.mTitle.setText(event.getTitle());
         holder.mLocation.setText(event.getLocation());
         holder.mDatetime.setText(Common.dateFormat.getTimeFromeDate(event.getStartTime())
             + " - " +  Common.dateFormat.getTimeFromeDate(event.getEndTime()) );
+
+        holder.imgLike.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!liked.get(position)) {
+                    liked.set(position, true);
+                    holder.imgLike.setImageResource(R.drawable.ic_heart_red);
+                } else {
+                    liked.set(position, false);
+                    holder.imgLike.setImageResource(R.drawable.ic_heart_pink);
+                }
+            }
+        });
+
+        holder.imgAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (!added.get(position)) {
+                    added.set(position, true);
+                    holder.imgAdd.setImageResource(R.drawable.ic_add_succ);
+                } else {
+                    added.set(position, false);
+                    holder.imgAdd.setImageResource(R.drawable.ic_add);
+                }
+            }
+        });
 
     }
 
@@ -85,6 +119,8 @@ public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.
         private final TextView mDatetime;
         private LinearLayout mLayout;
         private MyItemClickListener mListener;
+        private final ImageView imgLike;
+        private final ImageView imgAdd;
 
         /**
          * Constructor of Holder to bind the widgets and set the clickListener and longClickListener of every item
@@ -98,6 +134,9 @@ public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.
             mLocation = (TextView) view.findViewById(R.id.finding_main_location_textview);
             mDatetime = (TextView) view.findViewById(R.id.finding_main_datetime_textview);
             mLayout = (LinearLayout) view.findViewById(R.id.finding_list_item_linearlayout);
+            imgLike = (ImageView) view.findViewById(R.id.finding_list_item_like);
+            imgAdd = (ImageView) view.findViewById(R.id.finding_list_item_add);
+
             mListener = listener;
             mLayout.setOnClickListener(this);
         }

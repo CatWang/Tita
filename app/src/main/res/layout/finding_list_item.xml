@@ -34,7 +34,7 @@
 
         <LinearLayout
             android:id="@+id/finding_list_item_linearlayout"
-            android:layout_width="280dp"
+            android:layout_width="260dp"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_alignParentLeft="true">
