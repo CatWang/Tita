@@ -138,6 +138,7 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
     }
 
     private void setAdapter() {
+        Collections.reverse(mAllEventList);
         mFindingAdapter = new FindingListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mFindingAdapter);

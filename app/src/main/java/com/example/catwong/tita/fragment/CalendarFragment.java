@@ -200,6 +200,7 @@ public class CalendarFragment extends Fragment implements
     }
 
     private void refreshAdapter() {
+        Collections.reverse(mAllEventList);
         mEventAdapter = new EventListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
 
@@ -266,6 +267,7 @@ public class CalendarFragment extends Fragment implements
 //            }
             selectedEvent.add(event);
         }
+        Collections.reverse(mAllEventList);
         mEventAdapter = new EventListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mEventAdapter.setOnItemClickListener(this);
         mRecyclerView.setAdapter(mEventAdapter);

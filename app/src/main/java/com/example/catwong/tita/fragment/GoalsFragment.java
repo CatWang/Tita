@@ -234,6 +234,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     }
 
     private void refreshAdapter() {
+        Collections.reverse(mAllGoalList);
         mGoalAdapter = new GoalListAdapter(homeActivity.getBaseContext(), mAllGoalList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mGoalAdapter);
