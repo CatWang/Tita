@@ -78,6 +78,16 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
     }
 
     /**
+     * Delete a diary and update the list
+     *
+     * @param postion
+     */
+    public void deleteItem(int postion) {
+        mEventList.remove(postion);
+        notifyDataSetChanged();
+    }
+
+    /**
      * Define the Holder class and implement OnClickListener and OnLongClickListener
      */
     static class Holder extends RecyclerView.ViewHolder implements View.OnClickListener {
