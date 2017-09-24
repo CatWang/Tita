@@ -99,6 +99,19 @@ public class CalendarFragment extends Fragment implements
         }
     });
 
+    private final Handler createHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+
+
+                refreshAdapter();
+            }
+
+            return true;
+        }
+    });
+
 
     public CalendarFragment(){
 
@@ -117,8 +130,6 @@ public class CalendarFragment extends Fragment implements
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_calendar);
-
     }
 
     /**
@@ -164,14 +175,21 @@ public class CalendarFragment extends Fragment implements
                 final RadioButton radPrivate = (RadioButton) v_iew.findViewById(R.id.radio_private);
                 final RadioButton radPublic = (RadioButton) v_iew.findViewById(R.id.radio_public);
 
+                txtStartTime.setText("2017-09-24 10:11:20");
+                txtEndTime.setText("2017-09-26 20:11:20");
+
                 alter.setTitle("Add Event");
 
-                alter.setPositiveButton("Link",
+                alter.setPositiveButton("Add",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("Person Dialog", "modify");
+                                String body = "description=no&title=" + txtTitle.getText() + "&location=" + txtLocation.getText()
+                                        + "&start_time=" + txtStartTime.getText() + "&end_time=" + txtEndTime.getText() + "&type=";
+                                if (radPrivate.isChecked()) body += "private";
+                                if (radPublic.isChecked()) body += "public";
 
+                                HttpHelper.post(createHandler, "event/create", body, true);
                             }
                         }).setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
