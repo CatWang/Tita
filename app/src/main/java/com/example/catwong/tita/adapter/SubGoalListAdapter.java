@@ -59,9 +59,9 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
     @Override
     public void onBindViewHolder(SubGoalListAdapter.Holder holder, int position) {
         SubGoal subGoal = mSubGoalList.get(position);
-        holder.mTitle.setText("" + subGoal.getGoalID());
-        holder.mLocation.setText("" + subGoal.getGoalID());
-        holder.mDatetime.setText(Common.dateFormat.getTimeFromeDate(subGoal.getStartTime()));
+//        holder.mTitle.setText("" + subGoal.getGoalID());
+        holder.mLocation.setText(subGoal.getEndTime().toString());
+        holder.mDatetime.setText(subGoal.getStartTime().toString());
 
     }
 
