@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Tita</string>
     <string name="diary_title">Diary</string>
-    <dimen name="subheading">16sp</dimen>
+    <dimen name="subheading">16dp</dimen>
     <string name="diary_datetime">5:00 PM</string>
     <string name="diary_detail">DCH, Rice</string>
 
