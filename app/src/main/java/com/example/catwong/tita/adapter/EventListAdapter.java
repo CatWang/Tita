@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -85,6 +86,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
         private final TextView mDatetime;
         private LinearLayout mLayout;
         private MyItemClickListener mListener;
+        private final ImageView imgTrash;
 
         /**
          * Constructor of Holder to bind the widgets and set the clickListener and longClickListener of every item
@@ -98,6 +100,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
             mLocation = (TextView) view.findViewById(R.id.diary_main_location_textview);
             mDatetime = (TextView) view.findViewById(R.id.diary_main_datetime_textview);
             mLayout = (LinearLayout) view.findViewById(R.id.diary_list_item_linearlayout);
+            imgTrash = (ImageView) view.findViewById(R.id.dairy_list_item_trash);
             mListener = listener;
             mLayout.setOnClickListener(this);
         }

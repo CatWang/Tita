@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.activity.EventDetailActivity;
@@ -34,9 +35,9 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
     private ArrayList<Event> mAllEventList;
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
-    private Button btnFriend;
-    private Button btnEmail;
-    private Button btnLocal;
+    private TextView btnFriend;
+    private TextView btnEmail;
+    private TextView btnLocal;
 
 
     public FindingFragment() {
@@ -75,9 +76,9 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
         setListener();
     }
     private void init() {
-        btnFriend = (Button) this.getView().findViewById(R.id.friend_btn);
-        btnEmail = (Button) this.getView().findViewById(R.id.email_btn);
-        btnLocal = (Button) this.getView().findViewById(R.id.local_btn);
+        btnFriend = (TextView) this.getView().findViewById(R.id.friend_btn);
+        btnEmail = (TextView) this.getView().findViewById(R.id.email_btn);
+        btnLocal = (TextView) this.getView().findViewById(R.id.local_btn);
         mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.finding_main_recyclerView);
 
     }
@@ -89,31 +90,54 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
         startDate = Common.dateFormat.getDate("09/24/2017 18:00");
         endDate = Common.dateFormat.getDate("09/24/2017 20:00");
         String title;
-        switch (type) {
-            case 0:
-                title = "Friend";
-                break;
-            case 1:
-                title = "Email";
-                break;
-            case 2:
-                title = "Local";
-                break;
-                default:
-                    title = "Haha";
-        }
         ArrayList<String> keywords = new ArrayList<>();
         keywords.add("meeting");
         keywords.add("machine learning");
-        for (int i = 0; i < 10; ++i) {
-            Event event = new Event(i, title, startDate, endDate,
-                    "1070 RMC", CommonKey.TYPE_PUBLIC);
-            event.setAdded(true);
-            event.setKeywords(keywords);
-            event.setDescription("Machine Learning Meeting");
-            event.setHomepageLink("www.catwangmenma.com");
+        switch (type) {
+            case 0:
+                title = "Friend";
+                mAllEventList.clear();
+                for (int i = 0; i < 10; ++i) {
+                    Event event = new Event(i, title, startDate, endDate,
+                            "1070 RMC", CommonKey.TYPE_PUBLIC);
+                    event.setAdded(false);
+                    event.setKeywords(keywords);
+                    event.setDescription("Machine Learning Meeting");
+                    event.setHomepageLink("www.catwangmenma.com");
 
-            mAllEventList.add(event);
+                    mAllEventList.add(event);
+                }
+                break;
+            case 1:
+                title = "Email";
+                mAllEventList.clear();
+                for (int i = 0; i < 10; ++i) {
+                    Event event = new Event(i, title, startDate, endDate,
+                            "1070 RMC", CommonKey.TYPE_PUBLIC);
+                    event.setAdded(false);
+                    event.setKeywords(keywords);
+                    event.setDescription("Machine Learning Meeting");
+                    event.setHomepageLink("www.catwangmenma.com");
+
+                    mAllEventList.add(event);
+                }
+                break;
+            case 2:
+                title = "Local";
+                mAllEventList.clear();
+                for (int i = 0; i < 10; ++i) {
+                    Event event = new Event(i, title, startDate, endDate,
+                            "1070 RMC", CommonKey.TYPE_PUBLIC);
+                    event.setAdded(false);
+                    event.setKeywords(keywords);
+                    event.setDescription("Machine Learning Meeting");
+                    event.setHomepageLink("www.catwangmenma.com");
+
+                    mAllEventList.add(event);
+                }
+                break;
+            default:
+                title = "Haha";
         }
         Collections.reverse(mAllEventList);
     }
@@ -123,10 +147,10 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
         mFindingAdapter = new FindingListAdapter(homeActivity.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mFindingAdapter);
+        mFindingAdapter.setOnItemClickListener(this);
     }
 
     private void setListener() {
-        mFindingAdapter.setOnItemClickListener(this);
         btnFriend.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -149,6 +173,7 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
                 setAdapter();
             }
         });
+        //mFindingAdapter.setOnItemClickListener(this);
     }
 
 
