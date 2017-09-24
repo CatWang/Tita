@@ -1,139 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="20dp"
-    android:paddingRight="20dp"
-    android:paddingTop="35dp">
+    tools:context="com.example.catwong.tita.fragment.CalendarFragment"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:clipToPadding="true">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Title:"
-        android:textColor="#2E84E8"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-    <EditText
-        android:layout_marginLeft="8dp"
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/goal_main_recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:maxLines="1"
-        android:id="@+id/add_goal_title"
-        android:layout_marginBottom="5dp"/>
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        tools:layout_editor_absoluteY="8dp"
+        tools:layout_editor_absoluteX="8dp"
+        tools:ignore="MissingConstraints">
 
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Location:"
-        android:textColor="#2E84E8"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-    <EditText
-        android:layout_marginLeft="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:maxLines="1"
-        android:id="@+id/add_goal_location"
-        android:layout_marginBottom="5dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Start Time:"
-        android:textColor="#2E84E8"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-    <EditText
-        android:layout_marginLeft="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:maxLines="1"
-        android:id="@+id/add_goal_start_time"
-        android:inputType="text|time"
-        android:layout_marginBottom="5dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="End Time:"
-        android:textColor="#2E84E8"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-    <EditText
-        android:layout_marginLeft="8dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textSize="16dp"
-        android:maxLines="1"
-        android:id="@+id/add_goal_end_time"
-        android:inputType="text|time"
-        android:layout_marginBottom="5dp"/>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Repeat:"
-        android:textColor="#2E84E8"
-        android:textSize="18dp"
-        android:layout_marginLeft="10dp"
-        android:textStyle="bold" />
-
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="5dp">
-
-        <TableRow
-            android:layout_marginTop="10dp">
-            <CheckBox android:id="@+id/goal_repeat_mon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Mon"
-                android:layout_marginRight="10dp"/>
-
-            <CheckBox android:id="@+id/goal_repeat_tue"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Tue"
-                android:layout_marginRight="10dp"/>
-
-            <CheckBox android:id="@+id/goal_repeat_wed"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Wed"
-                android:layout_marginRight="10dp"/>
-
-            <CheckBox android:id="@+id/goal_repeat_thu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Thu" />
-        </TableRow>
-
-        <TableRow
-            android:layout_marginTop="10dp">
-            <CheckBox android:id="@+id/goal_repeat_fir"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Fir" />
-
-            <CheckBox android:id="@+id/goal_repeat_sat"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sat" />
-
-            <CheckBox android:id="@+id/goal_repeat_sun"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Sun" />
-        </TableRow>
-    </TableLayout>
-
-</LinearLayout>
+    </android.support.v7.widget.RecyclerView>
+    </android.support.constraint.ConstraintLayout>

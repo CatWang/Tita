@@ -4,6 +4,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.Window;
 import android.widget.RadioButton;
@@ -12,7 +13,7 @@ import com.example.catwong.tita.R;
 import com.example.catwong.tita.adapter.MyPagerAdapter;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,
-        ViewPager.OnPageChangeListener {
+        ViewPager.OnPageChangeListener{
 
     private ViewPager viewPager;
 
@@ -20,7 +21,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     private RadioButton radio_finding;
     private RadioButton radio_goals;
     private RadioButton radio_user;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -110,5 +110,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
     @Override
     public void onPageScrollStateChanged(int state) { }
+
+
 }
 

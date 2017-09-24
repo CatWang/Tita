@@ -8,57 +8,80 @@ public class Goal {
 
 
     private String mDescription;
+
+    public String getLocation() {
+        return mLocation;
+    }
+
+    public void setLocation(String mLocation) {
+        this.mLocation = mLocation;
+    }
+
+    private String mLocation;
     private String mRepeatDay;
-    private int mDuration;
+    private String mStarttime;
+
+    public String getStarttime() {
+        return mStarttime;
+    }
+
+    public void setStarttime(String mStarttime) {
+        this.mStarttime = mStarttime;
+    }
+
+    public String getEndtime() {
+        return mEndtime;
+    }
+
+    public void setEndtime(String mEndtime) {
+        this.mEndtime = mEndtime;
+    }
+
+    private String mEndtime;
     private int mUserID;
 
     public Goal(){
 
     }
 
-    public Goal(String title, String description, String repeatDay, int duration, int userID) {
+    public Goal(String title, String location, String description, String repeatDay, String starttime, String endtime, int userID) {
         mTitle = title;
+        mLocation = location;
         mDescription = description;
         mRepeatDay = repeatDay;
-        mDuration = duration;
+        mStarttime = starttime;
+        mEndtime = endtime;
         mUserID = userID;
     }
 
-    public String getmTitle() {
+    public String getTitle() {
         return mTitle;
     }
 
-    public void setmTitle(String mTitle) {
+    public void setTitle(String mTitle) {
         this.mTitle = mTitle;
     }
 
     private String mTitle;
 
-    public String getmDescription() {
+    public String getDescription() {
         return mDescription;
     }
 
-    public void setmDescription(String mDescription) {
+    public void setDescription(String mDescription) {
         this.mDescription = mDescription;
     }
 
-    public String getmRepeatDay() {
+    public String getRepeatDay() {
         return mRepeatDay;
     }
 
-    public void setmRepeatDay(String mRepeatDay) {
+    public void setRepeatDay(String mRepeatDay) {
         this.mRepeatDay = mRepeatDay;
     }
 
-    public int getmDuration() {
-        return mDuration;
-    }
 
-    public void setmDuration(int mDuration) {
-        this.mDuration = mDuration;
-    }
-
-    public int getmUserID() {
+    public int getUserID() {
         return mUserID;
     }
 
