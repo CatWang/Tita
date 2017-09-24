@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.model.Event;
+import com.example.catwong.tita.util.Common;
 
 import java.util.ArrayList;
 
@@ -62,7 +63,8 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
         Event event = mEventList.get(position);
         holder.mTitle.setText(event.getTitle());
         holder.mLocation.setText(event.getLocation());
-        holder.mDatetime.setText(event.getStartTime());
+        holder.mDatetime.setText(Common.dateFormat.getTimeFromeDate(event.getStartTime())
+            + " - " +  Common.dateFormat.getTimeFromeDate(event.getEndTime()) );
 
     }
 

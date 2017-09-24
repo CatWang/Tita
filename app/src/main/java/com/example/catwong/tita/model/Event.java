@@ -1,13 +1,19 @@
 package com.example.catwong.tita.model;
 
+import android.os.Parcelable;
+
+import java.io.Serializable;
+import java.util.Date;
+
 /**
  * Created by LENOVO on 2017/9/23.
  */
 
-public class Event {
+public class Event implements Serializable{
+    private long eventID;
     private String mtitle;
-    private String mStartTime;
-    private String mEndTime;
+    private Date mStartTime;
+    private Date mEndTime;
     private String mLocation;
     private String mGps;
     private String mDescription;
@@ -20,7 +26,8 @@ public class Event {
 
     }
 
-    public Event(String title, String startTime, String endTime, String location, String gps, String description, String imageURL, String docLink, String homepageLink, String type) {
+    public Event(long id, String title, Date startTime, Date endTime, String location, String gps, String description, String imageURL, String docLink, String homepageLink, String type) {
+        eventID = id;
         mtitle = title;
         mStartTime = startTime;
         mEndTime = endTime;
@@ -34,6 +41,15 @@ public class Event {
 
     }
 
+    public long getEventID() {
+        return eventID;
+    }
+
+    public void setEventID(long eventID) {
+        this.eventID = eventID;
+    }
+
+
     public String getTitle() {
         return mtitle;
     }
@@ -42,19 +58,19 @@ public class Event {
         this.mtitle = mtitle;
     }
 
-    public String getStartTime() {
+    public Date getStartTime() {
         return mStartTime;
     }
 
-    public void setStartTime(String mStartTime) {
+    public void setStartTime(Date mStartTime) {
         this.mStartTime = mStartTime;
     }
 
-    public String getEndTime() {
+    public Date getEndTime() {
         return mEndTime;
     }
 
-    public void setEndTime(String mEndTime) {
+    public void setEndTime(Date mEndTime) {
         this.mEndTime = mEndTime;
     }
 

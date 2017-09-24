@@ -17,13 +17,19 @@ import android.widget.TextView;
 
 import com.example.catwong.tita.R;
 //import com.example.catwong.tita.adapter.EventListAdapter;
+import com.example.catwong.tita.activity.EventDetailActivity;
 import com.example.catwong.tita.activity.HomeActivity;
 import com.example.catwong.tita.activity.RegisterActivity;
 import com.example.catwong.tita.adapter.EventListAdapter;
+import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
+import com.example.catwong.tita.util.Common;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 import com.readystatesoftware.systembartint.SystemBarTintManager;
 
+import java.text.DateFormat;
+import java.text.FieldPosition;
+import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -94,8 +100,15 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     private void setAdapter() {
 //        mAllEventList = (ArrayList<Event>) Event.listAll(Event.class);
         mAllEventList = new ArrayList<Event> ();
-        Event event = new Event("Event", "Sep 22, 2017", "Sep 24, 2017", "RMC", "123", "description", "123", "doclink", "123", "F");
+
+        Date startDate, endDate;
+
+        startDate = Common.dateFormat.getDate("09/24/2017 18:00");
+        endDate = Common.dateFormat.getDate("09/24/2017 20:00");
+
         for (int i = 0; i < 10; ++i) {
+            Event event = new Event(i, "Event", startDate, endDate,
+                    "RMC", "123", "description", "123", "doclink", "123", "F");
             mAllEventList.add(event);
         }
         Collections.reverse(mAllEventList);
@@ -168,10 +181,9 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     @Override
     public void onItemClick(View view, int position) {
         Event event = mAllEventList.get(position);
-//        Long id = event.getId();
-        Intent intent = new Intent(homeActivity, RegisterActivity.class);
-//        intent.putExtra(Constants.EXTRA_DIARY, id);
-//        startActivityForResult(intent, REQUEST_CODE);
+        //Long id = event.getEventID();
+        Intent intent = new Intent(homeActivity, EventDetailActivity.class);
+        intent.putExtra(CommonKey.EVENT, event);
         startActivity(intent);
     }
 

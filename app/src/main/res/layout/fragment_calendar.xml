@@ -68,20 +68,10 @@
 
                 />
 
-            <!--<android.support.design.widget.FloatingActionButton-->
-                <!--android:id="@+id/floatingActionButton"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:clickable="true"-->
-                <!--app:fabSize="mini"-->
-                <!--app:srcCompat="@drawable/ic_cal_add"-->
-                <!--android:backgroundTint="@color/calendar_current_day"-->
-                <!--android:layout_alignParentRight="true"-->
-                <!--android:layout_alignParentBottom="true"/>-->
             <ImageView
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:src="@drawable/ic_add"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:src="@drawable/ic_plus_white"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginRight="10dp"

@@ -12,4 +12,6 @@ public class CommonKey {
     public static final String NAME = "name";
     public static final String LOGGEDIN = "loggedin";
     public static final String NULL = "null";
+
+    public static final String EVENT = "event";
 }
