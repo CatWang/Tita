@@ -122,7 +122,7 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
 
         switch (type) {
             case 0:
-                HttpHelper.get(handler, "event/following", true);
+                HttpHelper.get(handler, "event/liked", true);
 
                 break;
             case 1:
