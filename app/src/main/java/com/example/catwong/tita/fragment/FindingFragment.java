@@ -67,9 +67,7 @@ public class FindingFragment extends Fragment implements FindingListAdapter.MyIt
     @Override
     public void onStart() {
         super.onStart();
-
         init();
-
         loadList(0);
         setAdapter();
         setListener();
