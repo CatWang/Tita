@@ -275,7 +275,34 @@ public class CalendarFragment extends Fragment implements
         Intent intent = new Intent(getContext(), EventDetailActivity.class);
         intent.putExtra("id", "" + event.getEventID());
         intent.putExtra("added", true);
+        Common.currentDate = mDate;
         getContext().startActivity(intent);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+        mDate = Common.currentDate;
+
+        if (mDate != null) {
+
+            String cur = HttpHelper.getDateString(mDate);
+
+            Calendar c = Calendar.getInstance();
+            c.setTime(mDate);
+            c.set(Calendar.DATE, c.get(Calendar.DATE) + 1);
+
+            String next = HttpHelper.getDateString(c);
+
+            String url = "?s=" + cur + "&e=" + next;
+            HttpHelper.get(handler, HttpHelper.EVENT_DATE_URL + url, true);
+        }
+    }
+
+//    @Override
+//    public void onStop() {
+//        super.onStop();
+//        Common.currentDate = null;
+//    }
 }

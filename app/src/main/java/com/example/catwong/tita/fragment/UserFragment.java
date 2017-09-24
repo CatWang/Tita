@@ -149,7 +149,7 @@ public class UserFragment extends Fragment {
                 View v_iew=inflater.inflate(R.layout.layout_social_link, null);
                 alter.setView(v_iew);
 
-                alter.setTitle("Link Facebook");
+                alter.setTitle("Link Twitter");
                 final TextView txtUsername = (TextView) v_iew.findViewById(R.id.link_social_input);
                 final TextView txtPwd = (TextView) v_iew.findViewById(R.id.link_social_pwd_input);
 
