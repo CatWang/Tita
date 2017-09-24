@@ -5,5 +5,6 @@ package com.example.catwong.tita.util;
  */
 
 public class Common {
-    public static CustomDateFormat dateFormat = CustomDateFormat.getsInstance();
+    public final static CustomDateFormat dateFormat = CustomDateFormat.getsInstance();
+
 }

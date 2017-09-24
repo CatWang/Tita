@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="User Name:"
+        android:textColor="#2E84E8"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold" />
+    <EditText
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:maxLines="1"
+        android:id="@+id/link_social_input"
+        android:inputType="textEmailAddress"
+        android:layout_marginBottom="5dp"/>
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Password:"
+        android:textColor="#2E84E8"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold" />
+    <EditText
+        android:layout_marginLeft="8dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16dp"
+        android:maxLines="1"
+        android:id="@+id/link_social_pwd_input"
+        android:inputType="textPassword"
+        android:layout_marginBottom="5dp"/>
+
+</LinearLayout>

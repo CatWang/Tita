@@ -17,4 +17,13 @@ public class CommonKey {
 
     public static final int TYPE_PRIVATE = 1;
     public static final int TYPE_PUBLIC = 2;
+
+    public static final String EMAIL_ADD = "email_address";
+    public static final String EMAIL_PWD = "email_password";
+
+    public static final String FB_USERNAME = "fb_username";
+    public static final String FB_PWD = "fb_pwd";
+
+    public static final String TW_USERNAME = "tw_username";
+    public static final String TW_PWD = "tw_pwd";
 }
