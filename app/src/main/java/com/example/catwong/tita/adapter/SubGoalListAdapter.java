@@ -69,7 +69,16 @@ public class SubGoalListAdapter extends RecyclerView.Adapter<SubGoalListAdapter.
         holder.imgFinish.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                holder.imgMiss.setVisibility(View.GONE);
+                holder.imgMiss.setImageResource(R.drawable.ic_success);
+                holder.imgFinish.setVisibility(View.GONE);
+            }
+        });
+
+        holder.imgMiss.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                holder.imgMiss.setImageResource(R.drawable.ic_fail);
+                holder.imgFinish.setVisibility(View.GONE);
             }
         });
     }
