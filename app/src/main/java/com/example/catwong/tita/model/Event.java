@@ -25,6 +25,7 @@ public class Event implements Serializable{
     private ArrayList<String> keywords;
     private boolean added;
 
+
     public Event() {
 
     }

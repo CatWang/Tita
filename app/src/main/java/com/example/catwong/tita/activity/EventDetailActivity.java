@@ -32,6 +32,8 @@ public class EventDetailActivity extends AppCompatActivity {
     private ImageView imgAdd, imgLike, imgShare, imgEmail, imgFb;
     private ImageView imgTw, imgTrash;
 
+    public boolean liked = false;
+
     private final Handler handler = new Handler(new Handler.Callback() {
         @Override
         public boolean handleMessage(Message msg) {
@@ -48,11 +50,27 @@ public class EventDetailActivity extends AppCompatActivity {
                 txtLink.setText(event.get("homepage_link").getAsString());
                 txtDescription.setText(event.get("description").getAsString());
 
+
+
                 if (event.get("type").getAsString().equals("private")) {
-                    imgLike.setVisibility(View.INVISIBLE);
+                    imgLike.setVisibility(View.GONE);
+                } else {
+                    imgLike.setVisibility(View.VISIBLE);
+
+                    imgLike.setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View v) {
+                            if (!liked) {
+                                imgLike.setImageResource(R.drawable.ic_heart_red);
+                                liked = true;
+                            } else {
+                                liked = false;
+                                imgLike.setImageResource(R.drawable.ic_heart_pink);
+                            }
+                        }
+                    });
                 }
 
-                imgAdd.setVisibility(View.INVISIBLE);
             }
 
             return true;
@@ -66,6 +84,9 @@ public class EventDetailActivity extends AppCompatActivity {
         setContentView(R.layout.fragement_event_detail);
 
         HttpHelper.get(handler, "event/" + getIntent().getStringExtra("id"), true);
+
+        boolean added = getIntent().getBooleanExtra("added", false);
+
 
         txtTitle = (TextView) findViewById(R.id.detail_event_title);
         txtMore = (TextView) findViewById(R.id.detail_txt_more);
@@ -82,5 +103,13 @@ public class EventDetailActivity extends AppCompatActivity {
         imgFb = (ImageView) findViewById(R.id.detail_fb);
         imgTw = (ImageView) findViewById(R.id.detail_tw);
         imgTrash = (ImageView) findViewById(R.id.detail_trash);
+
+        if (added) {
+            imgAdd.setVisibility(View.GONE);
+            imgTrash.setVisibility(View.VISIBLE);
+        } else {
+            imgAdd.setVisibility(View.VISIBLE);
+            imgTrash.setVisibility(View.GONE);
+        }
     }
 }

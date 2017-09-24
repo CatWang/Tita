@@ -77,4 +77,47 @@
         android:inputType="text|time"
         android:layout_marginBottom="5dp"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Type:"
+        android:textColor="#2E84E8"
+        android:textSize="18dp"
+        android:layout_marginLeft="10dp"
+        android:textStyle="bold" />
+
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginLeft="8dp"
+                android:layout_marginTop="8dp">
+
+            <RadioButton
+                android:id="@+id/radio_private"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:textColor="#2E84E8"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="private"
+                android:checked="true"/>
+
+            <RadioButton
+                android:id="@+id/radio_public"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="#2E84E8"
+                android:textStyle="bold"
+                android:textSize="16dp"
+                android:text="public" />
+            </LinearLayout>
+
+        </RadioGroup>
+
 </LinearLayout>

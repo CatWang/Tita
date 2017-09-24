@@ -80,7 +80,7 @@ public class CalendarFragment extends Fragment implements
                     event.setLocation(subObject.get("location").getAsString());
                     event.setGps(subObject.get("gps").getAsString());
                     event.setLocation(subObject.get("location").getAsString());
-                    event.setImageUrl(subObject.get("image_url").getAsString());
+                    event.setImageUrl(subObject.get("image_url").getAsString() == null? "" : subObject.get("image_url").getAsString());
                     event.setDocLink(subObject.get("doc_link").getAsString());
                     event.setHomepageLink(subObject.get("homepage_link").getAsString());
                     event.setStartTime(HttpHelper.getDate(subObject.get("start_time").getAsString().replace('T', ' ')));
@@ -274,6 +274,7 @@ public class CalendarFragment extends Fragment implements
         Event event = mAllEventList.get(position);
         Intent intent = new Intent(getContext(), EventDetailActivity.class);
         intent.putExtra("id", "" + event.getEventID());
+        intent.putExtra("added", true);
         getContext().startActivity(intent);
     }
 

@@ -72,7 +72,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
             @Override
             public void onClick(View v) {
                 int position = (Integer) v.getTag();
-                mEventList.remove(position);
+                deleteItem(position);
             }
         });
     }
