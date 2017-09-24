@@ -33,7 +33,7 @@
             android:layout_toLeftOf="@+id/finding_list_item_add"/>
 
         <LinearLayout
-            android:id="@+id/diary_list_item_linearlayout"
+            android:id="@+id/finding_list_item_linearlayout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
@@ -55,11 +55,11 @@
                 android:orientation="vertical">
 
                 <TextView
-                    android:id="@+id/diary_main_title_textview"
+                    android:id="@+id/finding_main_title_textview"
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     android:layout_marginBottom="@dimen/small_margin"
-                    android:layout_weight="1.8"
+                    android:layout_weight="2.4"
                     android:maxLines="1"
                     android:singleLine="true"
                     android:text="@string/diary_title"
@@ -79,7 +79,7 @@
                         android:src="@drawable/ic_location"/>
 
                     <TextView
-                        android:id="@+id/diary_main_location_textview"
+                        android:id="@+id/finding_main_location_textview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/small_tiny_margin"
@@ -102,7 +102,7 @@
                         android:src="@drawable/ic_time"/>
 
                     <TextView
-                        android:id="@+id/diary_main_datetime_textview"
+                        android:id="@+id/finding_main_datetime_textview"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_marginTop="@dimen/small_tiny_margin"

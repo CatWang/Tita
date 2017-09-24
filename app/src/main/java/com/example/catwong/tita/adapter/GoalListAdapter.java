@@ -11,6 +11,7 @@ import android.widget.TextView;
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.model.Goal;
+import com.example.catwong.tita.util.Common;
 
 import java.util.ArrayList;
 
@@ -63,7 +64,7 @@ public class GoalListAdapter extends RecyclerView.Adapter<GoalListAdapter.Holder
         Goal goal = mGoalList.get(position);
         holder.mTitle.setText(goal.getTitle());
         holder.mLocation.setText(goal.getLocation());
-        holder.mDatetime.setText(goal.getStarttime());
+        holder.mDatetime.setText(Common.dateFormat.getTimeFromeDate(goal.getStartTime()));
 
     }
 

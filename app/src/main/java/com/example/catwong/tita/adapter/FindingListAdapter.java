@@ -18,7 +18,7 @@ import java.util.ArrayList;
  * Created by LENOVO on 2017/9/23.
  */
 
-public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Holder> {
+public class FindingListAdapter extends RecyclerView.Adapter<FindingListAdapter.Holder> {
     private LayoutInflater mInflater;
     private ArrayList<Event> mEventList;
     private MyItemClickListener mItemClickListener = null;
@@ -37,7 +37,7 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
      * @param context
      * @param data
      */
-    public EventListAdapter(Context context, ArrayList<Event> data) {
+    public FindingListAdapter(Context context, ArrayList<Event> data) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
         mEventList = data;
@@ -53,13 +53,13 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
     }
 
     @Override
-    public EventListAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View mView = mInflater.inflate(R.layout.dairy_list_item, parent, false);
+    public FindingListAdapter.Holder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View mView = mInflater.inflate(R.layout.finding_list_item, parent, false);
         return new Holder(mView, mItemClickListener);
     }
 
     @Override
-    public void onBindViewHolder(EventListAdapter.Holder holder, int position) {
+    public void onBindViewHolder(FindingListAdapter.Holder holder, int position) {
         Event event = mEventList.get(position);
         holder.mTitle.setText(event.getTitle());
         holder.mLocation.setText(event.getLocation());
@@ -94,10 +94,10 @@ public class EventListAdapter extends RecyclerView.Adapter<EventListAdapter.Hold
          */
         public Holder(View view, MyItemClickListener listener) {
             super(view);
-            mTitle = (TextView) view.findViewById(R.id.diary_main_title_textview);
-            mLocation = (TextView) view.findViewById(R.id.diary_main_location_textview);
-            mDatetime = (TextView) view.findViewById(R.id.diary_main_datetime_textview);
-            mLayout = (LinearLayout) view.findViewById(R.id.diary_list_item_linearlayout);
+            mTitle = (TextView) view.findViewById(R.id.finding_main_title_textview);
+            mLocation = (TextView) view.findViewById(R.id.finding_main_location_textview);
+            mDatetime = (TextView) view.findViewById(R.id.finding_main_datetime_textview);
+            mLayout = (LinearLayout) view.findViewById(R.id.finding_list_item_linearlayout);
             mListener = listener;
             mLayout.setOnClickListener(this);
         }

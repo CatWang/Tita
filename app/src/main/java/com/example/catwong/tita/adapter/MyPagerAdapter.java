@@ -38,13 +38,13 @@ public class MyPagerAdapter extends FragmentPagerAdapter {
             if (fragment0 == null) fragment0 = new CalendarFragment(homeActivity);
             return fragment0;
         } else if (position == 1) {
-            if (fragment1 == null) fragment1 = new FindingFragment();
+            if (fragment1 == null) fragment1 = new FindingFragment(homeActivity);
             return fragment1;
         } else if (position == 2) {
             if (fragment2 == null) fragment2 = new GoalsFragment(homeActivity);
             return fragment2;
         } else if (position == 3) {
-            if (fragment3 == null) fragment3 = new UserFragment();
+            if (fragment3 == null) fragment3 = new UserFragment(homeActivity);
             return fragment3;
         }
 

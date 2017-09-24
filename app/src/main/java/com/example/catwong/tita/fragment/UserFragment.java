@@ -1,6 +1,7 @@
 package com.example.catwong.tita.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
+import com.example.catwong.tita.activity.HomeActivity;
 import com.example.catwong.tita.activity.LikeListActivity;
 import com.example.catwong.tita.activity.MainActivity;
 import com.example.catwong.tita.common.CommonKey;
@@ -27,10 +29,16 @@ public class UserFragment extends Fragment {
 
     private RelativeLayout layoutEmailLink, layoutFbLink, layoutTwLink;
     private RelativeLayout layoutLike, layoutLogout;
+    private HomeActivity homeActivity;
 
 
     public UserFragment() {
         // Required empty public constructor
+    }
+
+    @SuppressLint("ValidFragment")
+    public  UserFragment(HomeActivity homeActivity) {
+        this.homeActivity = homeActivity;
     }
 
 

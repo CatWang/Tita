@@ -1,7 +1,6 @@
 package com.example.catwong.tita.model;
 
 import java.io.Serializable;
-import java.security.interfaces.DSAKey;
 import java.util.Date;
 
 /**
@@ -23,15 +22,15 @@ public class Goal implements Serializable{
 
     private String mLocation;
     private String mRepeatDay;
-    private Date mStarttime;
+    private Date mStartTime;
     private long goalID;
 
-    public Date getStarttime() {
-        return mStarttime;
+    public Date getStartTime() {
+        return mStartTime;
     }
 
-    public void setStarttime(Date mStarttime) {
-        this.mStarttime = mStarttime;
+    public void setStartTime(Date mStarttime) {
+        this.mStartTime = mStarttime;
     }
 
     public Date getEndtime() {
@@ -54,7 +53,7 @@ public class Goal implements Serializable{
         mTitle = title;
         mLocation = location;
         mRepeatDay = repeatDay;
-        mStarttime = starttime;
+        mStartTime = starttime;
         mEndtime = endtime;
     }
 
