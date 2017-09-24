@@ -67,9 +67,9 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
                     Goal goal = new Goal();
                     goal.setGoalID(subObject.get("id").getAsInt());
                     goal.setTitle(subObject.get("title").getAsString());
-                    goal.setDescription(subObject.get("description") == null ? "" : subObject.get("description").getAsString());
-                    goal.setLocation(subObject.get("location") == null ? "" : subObject.get("location").getAsString());
-                    goal.setRepeatDay(subObject.get("repeat_day") == null ? "" : subObject.get("repeat_day").getAsString());
+                    goal.setDescription(subObject.get("description").getAsString());
+                    goal.setLocation(subObject.get("location").getAsString());
+                    goal.setRepeatDay(subObject.get("repeat_day").getAsString());
                     goal.setStartTime(HttpHelper.getTime(subObject.get("start_time").getAsString().replace('T', ' ')));
                     goal.setEndtime(HttpHelper.getTime(subObject.get("end_time").getAsString().replace('T', ' ')));
 
