@@ -2,9 +2,11 @@ package com.example.catwong.tita.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
@@ -46,6 +49,7 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
     private ArrayList<Event> mAllEventList;
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
+    private ImageView imgAddCalendar;
 
     private final static int REQUEST_CODE = 1;
 
@@ -94,6 +98,41 @@ public class CalendarFragment extends Fragment implements CompactCalendarView.Co
         Calendar today = Calendar.getInstance();
         mYearTextView.setText(new SimpleDateFormat("yyyy").format(new Date(today.getTimeInMillis())));
         mMonTextView.setText(new SimpleDateFormat("MMMM").format(new Date(today.getTimeInMillis())));
+
+        imgAddCalendar = (ImageView) getView().findViewById(R.id.add_calendar);
+
+        imgAddCalendar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alter = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+
+                View v_iew=inflater.inflate(R.layout.layout_add_event, null);
+                alter.setView(v_iew);
+
+                alter.setTitle("Add Event");
+                final TextView txtTile = (TextView) v_iew.findViewById(R.id.add_event_title);
+                final TextView txtLocation = (TextView) v_iew.findViewById(R.id.add_event_location);
+                final TextView txtStartTime = (TextView) v_iew.findViewById(R.id.add_event_start_time);
+                final TextView txtEndTime = (TextView) v_iew.findViewById(R.id.add_event_end_time);
+
+                alter.setPositiveButton("Link",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "modify");
+
+                            }
+                        }).setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "cancel");
+                            }
+                        });
+                alter.show();
+            }
+        });
     }
 
 

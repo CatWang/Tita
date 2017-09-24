@@ -51,4 +51,19 @@ public class CustomDateFormat {
     public String getDateTimeStringFromDate(Date date) {
         return mFormatter.format(date);
     }
+
+    public Date getTimeFromString(String s) {
+        try
+        {
+            Date date = dateToHourStringFormatter.parse(s);
+
+            System.out.println("date : "+mFormatter.format(date));
+            return date;
+        }
+        catch (ParseException ex)
+        {
+            System.out.println("Exception "+ex);
+            return null;
+        }
+    }
 }

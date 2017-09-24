@@ -2,14 +2,19 @@ package com.example.catwong.tita.fragment;
 
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
@@ -19,6 +24,7 @@ import com.example.catwong.tita.adapter.EventListAdapter;
 import com.example.catwong.tita.adapter.GoalListAdapter;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.model.Goal;
+import com.example.catwong.tita.util.Common;
 import com.github.sundeepk.compactcalendarview.CompactCalendarView;
 
 import java.text.SimpleDateFormat;
@@ -36,6 +42,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     private ArrayList<Goal> mAllGoalList;
     private LayoutInflater mInflater;
     private HomeActivity homeActivity;
+    private ImageView imgAddGaol;
 
     public GoalsFragment(){
 
@@ -76,12 +83,56 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     private void init() {
 
         mRecyclerView = (RecyclerView) this.getView().findViewById(R.id.goal_main_recyclerView);
+        imgAddGaol = (ImageView) getView().findViewById(R.id.add_goal);
+
+        imgAddGaol.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder alter = new AlertDialog.Builder(getActivity());
+                LayoutInflater inflater = getActivity().getLayoutInflater();
+
+                View v_iew=inflater.inflate(R.layout.layout_add_goal, null);
+                alter.setView(v_iew);
+
+                alter.setTitle("Add Goal");
+                final TextView txtTile = (TextView) v_iew.findViewById(R.id.add_goal_title);
+                final TextView txtLocation = (TextView) v_iew.findViewById(R.id.add_goal_location);
+                final TextView txtStartTime = (TextView) v_iew.findViewById(R.id.add_goal_start_time);
+                final TextView txtEndTime = (TextView) v_iew.findViewById(R.id.add_goal_end_time);
+                final CheckBox chkMon = (CheckBox) v_iew.findViewById(R.id.goal_repeat_mon);
+                final CheckBox chkTue = (CheckBox) v_iew.findViewById(R.id.goal_repeat_tue);
+                final CheckBox chkWed = (CheckBox) v_iew.findViewById(R.id.goal_repeat_wed);
+                final CheckBox chkTur = (CheckBox) v_iew.findViewById(R.id.goal_repeat_thu);
+                final CheckBox chkFir = (CheckBox) v_iew.findViewById(R.id.goal_repeat_fir);
+                final CheckBox chkSat = (CheckBox) v_iew.findViewById(R.id.goal_repeat_sat);
+                final CheckBox chkSun = (CheckBox) v_iew.findViewById(R.id.goal_repeat_sun);
+
+                alter.setPositiveButton("Link",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "modify");
+
+                            }
+                        }).setNegativeButton("Cancel",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                Log.i("Person Dialog", "cancel");
+                            }
+                        });
+                alter.show();
+            }
+        });
 
     }
     private void setAdapter() {
         mAllGoalList = new ArrayList<Goal> ();
-        Goal event = new Goal("GOAL", "Description", "123", "1345", "5:00", "6:00", 123);
+
+        Date startTime = Common.dateFormat.getTimeFromString("16:00");
+        Date endTime = Common.dateFormat.getTimeFromString("18:00");
         for (int i = 0; i < 10; ++i) {
+            Goal event = new Goal(i, "Read Paper", "Forden Library", "1100011", startTime, endTime);
             mAllGoalList.add(event);
         }
         Collections.reverse(mAllGoalList);
@@ -89,7 +140,6 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
         mRecyclerView.setLayoutManager(new LinearLayoutManager(homeActivity.getBaseContext()));
         mRecyclerView.setAdapter(mGoalAdapter);
     }
-
     /**
      * Set the listener of calendar and adapter
      */

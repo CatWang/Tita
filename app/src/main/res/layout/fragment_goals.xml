@@ -9,18 +9,40 @@
     android:orientation="vertical"
     android:clipToPadding="true">
 
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/goal_main_recyclerView"
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:clipToPadding="false"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
         tools:layout_editor_absoluteY="8dp"
-        tools:layout_editor_absoluteX="8dp"
-        tools:ignore="MissingConstraints">
+        tools:layout_editor_absoluteX="8dp">
 
-    </android.support.v7.widget.RecyclerView>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/goal_main_recyclerView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+
+            android:orientation="vertical"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentLeft="true"
+            tools:layout_editor_absoluteY="8dp"
+            tools:layout_editor_absoluteX="8dp"
+            tools:ignore="MissingConstraints">
+        </android.support.v7.widget.RecyclerView>
+
+        <ImageView
+            android:id="@+id/add_goal"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/ic_plus_white"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="8dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="8dp"/>
+
+    </RelativeLayout>
+
+
+
+
+
     </android.support.constraint.ConstraintLayout>

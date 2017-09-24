@@ -1,5 +1,8 @@
 package com.example.catwong.tita.model;
 
+import java.security.interfaces.DSAKey;
+import java.util.Date;
+
 /**
  * Created by LENOVO on 2017/9/23.
  */
@@ -19,39 +22,48 @@ public class Goal {
 
     private String mLocation;
     private String mRepeatDay;
-    private String mStarttime;
+    private Date mStarttime;
+    private long goalID;
 
-    public String getStarttime() {
+    public Date getStarttime() {
         return mStarttime;
     }
 
-    public void setStarttime(String mStarttime) {
+    public void setStarttime(Date mStarttime) {
         this.mStarttime = mStarttime;
     }
 
-    public String getEndtime() {
+    public Date getEndtime() {
         return mEndtime;
     }
 
-    public void setEndtime(String mEndtime) {
+    public void setEndtime(Date mEndtime) {
         this.mEndtime = mEndtime;
     }
 
-    private String mEndtime;
+    private Date mEndtime;
     private int mUserID;
 
     public Goal(){
 
     }
 
-    public Goal(String title, String location, String description, String repeatDay, String starttime, String endtime, int userID) {
+    public Goal(long id, String title, String location, String repeatDay, Date starttime, Date endtime) {
+        goalID = id;
         mTitle = title;
         mLocation = location;
-        mDescription = description;
         mRepeatDay = repeatDay;
         mStarttime = starttime;
         mEndtime = endtime;
-        mUserID = userID;
+    }
+
+
+    public long getGoalID() {
+        return goalID;
+    }
+
+    public void setGoalID(long goalID) {
+        this.goalID = goalID;
     }
 
     public String getTitle() {
