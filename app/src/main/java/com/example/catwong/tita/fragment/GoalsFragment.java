@@ -64,7 +64,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
                     JsonObject subObject = array.get(i).getAsJsonObject();
 
                     Goal goal = new Goal();
-                    goal.setmUserID(subObject.get("id").getAsInt());
+                    goal.setGoalID(subObject.get("id").getAsInt());
                     goal.setTitle(subObject.get("title").getAsString());
                     goal.setDescription(subObject.get("description") == null ? "" : subObject.get("description").getAsString());
                     goal.setLocation(subObject.get("location") == null ? "" : subObject.get("location").getAsString());
@@ -222,7 +222,7 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
     public void onItemClick(View view, int position) {
         Goal goal = mAllGoalList.get(position);
         Intent intent = new Intent(homeActivity, GoalDailyActivity.class);
-//        intent.putExtra(CommonKey.GOAL, goal);
+        intent.putExtra("id", "" + goal.getGoalID());
         startActivity(intent);
     }
 }
