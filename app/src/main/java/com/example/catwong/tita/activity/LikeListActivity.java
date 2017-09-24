@@ -6,11 +6,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.Menu;
 import android.view.View;
 
 import com.example.catwong.tita.R;
 import com.example.catwong.tita.adapter.EventListAdapter;
+import com.example.catwong.tita.adapter.LikeListAdapter;
 import com.example.catwong.tita.common.CommonKey;
 import com.example.catwong.tita.model.Event;
 import com.example.catwong.tita.util.Common;
@@ -23,9 +23,9 @@ import java.util.Date;
  * Created by CatWong on 9/23/17.
  */
 
-public class LikeListActivity extends AppCompatActivity implements EventListAdapter.MyItemClickListener{
+public class LikeListActivity extends AppCompatActivity implements LikeListAdapter.MyItemClickListener{
     private RecyclerView mRecyclerView;
-    private EventListAdapter mEventAdapter;
+    private LikeListAdapter mLikeAdapter;
     private ArrayList<Event> mAllEventList;
 
     @Override
@@ -59,7 +59,7 @@ public class LikeListActivity extends AppCompatActivity implements EventListAdap
         keywords.add("machine learning");
 
         for (int i = 0; i < 10; ++i) {
-            Event event = new Event(i, "Meeting", startDate, endDate,
+            Event event = new Event(i, "Favorite", startDate, endDate,
                     "1070 RMC", CommonKey.TYPE_PUBLIC);
             event.setAdded(true);
             event.setKeywords(keywords);
@@ -69,16 +69,16 @@ public class LikeListActivity extends AppCompatActivity implements EventListAdap
             mAllEventList.add(event);
         }
         Collections.reverse(mAllEventList);
-        mEventAdapter = new EventListAdapter(this.getBaseContext(), mAllEventList);
+        mLikeAdapter = new LikeListAdapter(this.getBaseContext(), mAllEventList);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this.getBaseContext()));
-        mRecyclerView.setAdapter(mEventAdapter);
+        mRecyclerView.setAdapter(mLikeAdapter);
     }
 
     /**
      * Set the listener of calendar and adapter
      */
     private void setListener() {
-        mEventAdapter.setOnItemClickListener(this);
+        mLikeAdapter.setOnItemClickListener(this);
     }
 
     @Override
@@ -89,9 +89,9 @@ public class LikeListActivity extends AppCompatActivity implements EventListAdap
         } else {
             System.out.println("Debug-info" + " true");
         }
-        //Long id = event.getEventID();
-        Intent intent = new Intent(this, EventDetailActivity.class);
-        intent.putExtra(CommonKey.EVENT, event);
-        startActivity(intent);
+//        //Long id = event.getEventID();
+//        Intent intent = new Intent(this, EventDetailActivity.class);
+//        intent.putExtra("id", "" + event.getEventID());
+//        startActivity(intent);
     }
 }
