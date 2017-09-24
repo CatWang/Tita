@@ -66,9 +66,9 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
                     Goal goal = new Goal();
                     goal.setmUserID(subObject.get("id").getAsInt());
                     goal.setTitle(subObject.get("title").getAsString());
-                    goal.setDescription(subObject.get("description").getAsString());
-                    goal.setLocation(subObject.get("location").getAsString());
-                    goal.setRepeatDay(subObject.get("repeat_day").getAsString());
+                    goal.setDescription(subObject.get("description") == null ? "" : subObject.get("description").getAsString());
+                    goal.setLocation(subObject.get("location") == null ? "" : subObject.get("location").getAsString());
+                    goal.setRepeatDay(subObject.get("repeat_day") == null ? "" : subObject.get("repeat_day").getAsString());
                     goal.setStartTime(HttpHelper.getTime(subObject.get("start_time").getAsString().replace('T', ' ')));
                     goal.setEndtime(HttpHelper.getTime(subObject.get("end_time").getAsString().replace('T', ' ')));
 
@@ -82,10 +82,19 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
         }
     });
 
+    private final Handler createHandler = new Handler(new Handler.Callback() {
+        @Override
+        public boolean handleMessage(Message msg) {
+            if (msg.what == HttpHelper.MSG_SUCCESS) {
+                setAdapter();
+            }
 
-    public GoalsFragment(){
+            return true;
+        }
+    });
 
-    }
+
+    public GoalsFragment() {}
 
     @SuppressLint("ValidFragment")
     public  GoalsFragment(HomeActivity homeActivity) {
@@ -145,14 +154,27 @@ public class GoalsFragment extends Fragment implements GoalListAdapter.MyItemCli
                 final CheckBox chkSat = (CheckBox) v_iew.findViewById(R.id.goal_repeat_sat);
                 final CheckBox chkSun = (CheckBox) v_iew.findViewById(R.id.goal_repeat_sun);
 
-                alter.setPositiveButton("Link",
+                txtStartTime.setText("14:20:00");
+                txtEndTime.setText("20:20:00");
+
+                alter.setPositiveButton("Create",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
-                                Log.i("Person Dialog", "modify");
+                                String body = "description=no&title=" + txtTile.getText() + "&location=" + txtLocation.getText()
+                                        + "&start_time=" + txtStartTime.getText() + "&end_time=" + txtEndTime.getText() + "&repeat_day=";
+                                if (chkMon.isChecked()) body += "M";
+                                if (chkTue.isChecked()) body += "T";
+                                if (chkWed.isChecked()) body += "W";
+                                if (chkTur.isChecked()) body += "U";
+                                if (chkFir.isChecked()) body += "F";
+                                if (chkSat.isChecked()) body += "A";
+                                if (chkSun.isChecked()) body += "N";
 
+                                HttpHelper.post(createHandler, "goal/create", body, true);
                             }
-                        }).setNegativeButton("Cancel",
+                        })
+                        .setNegativeButton("Cancel",
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
