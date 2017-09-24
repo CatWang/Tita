@@ -18,7 +18,9 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
 import android.widget.TextView;
 
 import com.example.catwong.tita.R;
@@ -154,6 +156,13 @@ public class CalendarFragment extends Fragment implements
 
                 View v_iew=inflater.inflate(R.layout.layout_add_event, null);
                 alter.setView(v_iew);
+
+                final EditText txtTitle = (EditText) v_iew.findViewById(R.id.add_event_title);
+                final EditText txtLocation = (EditText) v_iew.findViewById(R.id.add_event_location);
+                final EditText txtStartTime = (EditText) v_iew.findViewById(R.id.add_event_start_time);
+                final EditText txtEndTime = (EditText) v_iew.findViewById(R.id.add_event_end_time);
+                final RadioButton radPrivate = (RadioButton) v_iew.findViewById(R.id.radio_private);
+                final RadioButton radPublic = (RadioButton) v_iew.findViewById(R.id.radio_public);
 
                 alter.setTitle("Add Event");
 
